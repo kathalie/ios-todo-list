@@ -15,10 +15,26 @@ class TasksViewController: UITableViewController {
     
     var tasks: [(Int, [Int])] = []
     
+    @IBAction func addTask(_ sender: Any) {
+        print("Adding task")
+        
+        self.showInpulert(
+            title: "Creating a task",
+            message: "Enter the task to the text field below.",
+            placeholder: "Task",
+            callback: {[weak self] input in self?.createTask(input)})
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tasks = [(1, [11, 111, 1111]), (2, [22, 222])]
+    }
+    
+    func createTask(_ newTask: String) {
+        //TODO
+        
+        print("Task created: \(newTask)")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
