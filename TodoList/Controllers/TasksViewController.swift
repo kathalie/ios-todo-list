@@ -31,7 +31,7 @@ class TasksViewController: UITableViewController {
         tasks = [(1, [11, 111, 1111]), (2, [22, 222])]
     }
     
-    func createTask(_ newTask: String) {
+    private func createTask(_ newTask: String) {
         //TODO
         
         print("Task created: \(newTask)")

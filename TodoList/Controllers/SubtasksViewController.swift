@@ -15,7 +15,13 @@ class SubtasksViewController: UITableViewController {
     var subtasks: [Int] = []
     
     @IBAction private func addSubtask(_ sender: UIButton) {
+        print("Adding subtask")
         
+        self.showInpulert(
+            title: "Creating a task",
+            message: "Enter the task to the text field below.",
+            placeholder: "Task",
+            callback: {[weak self] input in self?.createSubtask(input)})
     }
     
     override func viewDidLoad() {
@@ -25,6 +31,12 @@ class SubtasksViewController: UITableViewController {
     
     func config(with subtasks: [Int]) {
         self.subtasks = subtasks
+    }
+    
+    private func createSubtask(_ newTask: String) {
+        //TODO
+        
+        print("Task created: \(newTask)")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
