@@ -25,6 +25,7 @@
 		8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
 		8C88C39C2CB5AED500A1D174 /* ViewController+InputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+InputAlert.swift"; sourceTree = "<group>"; };
+		8C88C39E2CB5BF5F00A1D174 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8CBD27382CB48FE100E413E3 /* TodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CBD273B2CB48FE100E413E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CBD273D2CB48FE100E413E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 				8CBD27492CB48FE500E413E3 /* LaunchScreen.storyboard */,
 				8CBD274C2CB48FE500E413E3 /* Info.plist */,
 				8CBD27442CB48FE100E413E3 /* TodoList.xcdatamodeld */,
+				8C88C39E2CB5BF5F00A1D174 /* README.md */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
