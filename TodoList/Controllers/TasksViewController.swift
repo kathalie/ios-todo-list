@@ -57,16 +57,16 @@ class TasksViewController: UITableViewController {
         
         let task = tasks[indexPath.row]
         
-        performSegue(withIdentifier: Const.goToSubtasks, sender: task.1)
+        performSegue(withIdentifier: Const.goToSubtasks, sender: task)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case Const.goToSubtasks:
             let subtasksVC = segue.destination as! SubtasksViewController
-            let subtasks = sender as! [Int]
+            let task = sender as! (Int, [Int])
             
-            subtasksVC.config(with: subtasks)
+            subtasksVC.config(with: task.1, task: task.0)
         default: break
         }
     }

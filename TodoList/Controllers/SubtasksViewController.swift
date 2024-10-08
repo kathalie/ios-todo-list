@@ -12,8 +12,10 @@ class SubtasksViewController: UITableViewController {
         static let cellReuseIdentifier = "subtask_cell"
     }
     
+    var task: Int?
     var subtasks: [Int] = []
     
+    @IBOutlet private weak var taskLabel: UILabel!
     @IBAction private func addSubtask(_ sender: UIButton) {
         print("Adding subtask")
         
@@ -27,10 +29,14 @@ class SubtasksViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if let task {
+            taskLabel.text = task.formatted()
+        }
     }
     
-    func config(with subtasks: [Int]) {
+    func config(with subtasks: [Int], task: Int) {
         self.subtasks = subtasks
+        self.task = task
     }
     
     private func createSubtask(_ newTask: String) {
