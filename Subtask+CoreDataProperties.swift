@@ -2,7 +2,7 @@
 //  Subtask+CoreDataProperties.swift
 //  TodoList
 //
-//  Created by Kathryn Verkhogliad on 13.10.2024.
+//  Created by Kathryn Verkhogliad on 14.10.2024.
 //
 //
 
@@ -16,9 +16,10 @@ extension Subtask {
         return NSFetchRequest<Subtask>(entityName: "Subtask")
     }
 
-    @NSManaged public var content: String?
+    @NSManaged public var content: String
     @NSManaged public var isCompleted: Bool
-    @NSManaged public var parentTask: Task?
+    @NSManaged public var id: UUID
+    @NSManaged public var parentTask: Task
 
 }
 

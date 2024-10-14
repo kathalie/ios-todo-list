@@ -12,8 +12,8 @@ class SubtasksViewController: UITableViewController {
         static let cellReuseIdentifier = "subtask_cell"
     }
     
-    var task: Int?
-    var subtasks: [Int] = []
+    var taskEntity: TaskEntity?
+    var subtaskEntities: [SubtaskEntity] = []
     
     @IBOutlet private weak var taskLabel: UILabel!
     @IBAction private func addSubtask(_ sender: UIButton) {
@@ -29,14 +29,14 @@ class SubtasksViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if let task {
-            taskLabel.text = task.formatted()
+        if let taskEntity {
+            taskLabel.text = taskEntity.content
         }
     }
     
-    func config(with subtasks: [Int], task: Int) {
-        self.subtasks = subtasks
-        self.task = task
+    func config(with subtaskEntities: [SubtaskEntity], taskEntity: TaskEntity) {
+        self.subtaskEntities = subtaskEntities
+        self.taskEntity = taskEntity
     }
     
     private func createSubtask(_ newTask: String) {
@@ -46,15 +46,15 @@ class SubtasksViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        subtasks.count
+        subtaskEntities.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.cellReuseIdentifier) as! SubtaskTableViewCell
         
-        let subtask = subtasks[indexPath.row]
+        let subtaskEntity = subtaskEntities[indexPath.row]
         
-        cell.config(subtask: subtask)
+        cell.config(with: subtaskEntity)
         
         return cell
     }
@@ -66,7 +66,7 @@ class SubtasksViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             //TODO remove from database!
-            subtasks.remove(at: indexPath.row)
+            subtaskEntities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

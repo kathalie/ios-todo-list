@@ -13,7 +13,8 @@ class TasksViewController: UITableViewController {
         static let goToSubtasks = "go_to_subtasks"
     }
     
-    var tasks: [(Int, [Int])] = []
+    var taskEntities: [TaskEntity] = []
+    var dbManager: DBManager = CoreDataManager()
     
     @IBAction func addTask(_ sender: Any) {
         print("Adding task")
@@ -22,32 +23,47 @@ class TasksViewController: UITableViewController {
             title: "Creating a task",
             message: "Enter the task to the text field below.",
             placeholder: "Task",
-            callback: {[weak self] input in self?.createTask(input)})
+            callback: {[weak self] input in self?.createTask(input)}
+        )
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tasks = [(1, [11, 111, 1111]), (2, [22, 222])]
+        loadTasks()
     }
     
-    private func createTask(_ newTask: String) {
-        //TODO
+    private func loadTasks() {
+        guard let taskEntities = dbManager.getTasks()
+        else {
+            print("Failed to load tasks")
+            
+            return
+        }
         
-        print("Task created: \(newTask)")
+        self.taskEntities = taskEntities
+        self.tableView.reloadData()
+    }
+    
+    private func createTask(_ taskContent: String) {
+        let newTask = CreateTaskEntity(content: taskContent, dueDate: Date.now)
+        
+        _ = dbManager.createTask(newTask: newTask)
+        
+        loadTasks()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tasks.count
+        taskEntities.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.cellReuseIdentifier
         ) as! TaskTableViewCell
         
-        let task = tasks[indexPath.row]
+        let taskEntity = taskEntities[indexPath.row]
         
-        cell.config(task: task.0)
+        cell.config(taskEntity: taskEntity, delegate: self)
         
         return cell
     }
@@ -55,27 +71,46 @@ class TasksViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let task = tasks[indexPath.row]
+        let taskEntity = taskEntities[indexPath.row]
         
-        performSegue(withIdentifier: Const.goToSubtasks, sender: task)
+        performSegue(withIdentifier: Const.goToSubtasks, sender: taskEntity)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case Const.goToSubtasks:
             let subtasksVC = segue.destination as! SubtasksViewController
-            let task = sender as! (Int, [Int])
+            let taskEntity = sender as! TaskEntity
             
-            subtasksVC.config(with: task.1, task: task.0)
+            subtasksVC.config(with: taskEntity.subtasks, taskEntity: taskEntity)
         default: break
         }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            //TODO remove from database!
-            tasks.remove(at: indexPath.row)
+            let taskToRemove = taskEntities[indexPath.row]
+            
+            let deletedSuccessfully = dbManager.deleteTask(id: taskToRemove.id)
+            
+            if !deletedSuccessfully {
+                self.showErrorAlert(title: "Something went wrong", message: "Failed to delete a task")
+                
+                return
+            }
+            
+            taskEntities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+}
+
+extension TasksViewController: TaskEditorDelegate {
+    func saveEditedTask(_ newTask: TaskEntity) -> Bool {
+        let editedSuccessfully = dbManager.editTask(task: newTask)
+        
+        loadTasks()
+        
+        return editedSuccessfully
     }
 }

@@ -2,7 +2,7 @@
 //  Subtask+CoreDataClass.swift
 //  TodoList
 //
-//  Created by Kathryn Verkhogliad on 13.10.2024.
+//  Created by Kathryn Verkhogliad on 14.10.2024.
 //
 //
 

@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.swift
 //  TodoList
 //
-//  Created by Kathryn Verkhogliad on 13.10.2024.
+//  Created by Kathryn Verkhogliad on 14.10.2024.
 //
 //
 
@@ -16,10 +16,11 @@ extension Task {
         return NSFetchRequest<Task>(entityName: "Task")
     }
 
-    @NSManaged public var content: String?
+    @NSManaged public var content: String
     @NSManaged public var isCompleted: Bool
-    @NSManaged public var dueDate: Date?
-    @NSManaged public var subtasks: NSSet?
+    @NSManaged public var dueDate: Date
+    @NSManaged public var id: UUID
+    @NSManaged public var subtasks: NSSet
 
 }
 

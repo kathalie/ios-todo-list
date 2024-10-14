@@ -2,12 +2,14 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Subtask" representedClassName=".Subtask" syncable="YES">
         <attribute name="content" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="parentTask" maxCount="1" deletionRule="No Action" destinationEntity="Task" inverseName="subtasks" inverseEntity="Task"/>
     </entity>
     <entity name="Task" representedClassName=".Task" syncable="YES">
         <attribute name="content" attributeType="String"/>
-        <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dueDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <relationship name="subtasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Subtask" inverseName="parentTask" inverseEntity="Subtask"/>
     </entity>

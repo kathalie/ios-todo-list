@@ -13,8 +13,8 @@ final class SubtaskTableViewCell: UITableViewCell {
     
     var completed: Bool = false
     
-    func config(subtask: Int) {
-        subtaskLabel.text = subtask.formatted()
+    func config(with subtaskEntity: SubtaskEntity) {
+        subtaskLabel.text = subtaskEntity.content
         
         let tapRecogniser = UITapGestureRecognizer(
             target: self,
