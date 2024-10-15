@@ -14,7 +14,7 @@ class TasksViewController: UITableViewController {
     }
     
     var taskEntities: [TaskEntity] = []
-    var dbManager: DBManager = CoreDataManager()
+    var dbManager: DBManager = CoreDataManager.shared
     
     @IBAction func addTask(_ sender: Any) {
         print("Adding task")
@@ -82,7 +82,11 @@ class TasksViewController: UITableViewController {
             let subtasksVC = segue.destination as! SubtasksViewController
             let taskEntity = sender as! TaskEntity
             
-            subtasksVC.config(with: taskEntity.subtasks, taskEntity: taskEntity)
+            subtasksVC.config(
+                with: taskEntity.subtasks,
+                taskEntity: taskEntity,
+                delegate: self
+            )
         default: break
         }
     }
@@ -112,5 +116,11 @@ extension TasksViewController: TaskEditorDelegate {
         loadTasks()
         
         return editedSuccessfully
+    }
+}
+
+extension TasksViewController: DBManagerDelegate {
+    func getDBManager() -> DBManager {
+        return dbManager
     }
 }

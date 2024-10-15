@@ -8,7 +8,33 @@
 import Foundation
 
 class CoreDataManager: DBManager {
+    static let shared = CoreDataManager()
+    
+    private init() {}
+    
     private var context = CoreDataStack.shared.persistentContainer.viewContext
+    
+    private func getTask(by id: UUID) -> Task? {
+        let request = Task.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "id = \"\(id)\"")
+        
+        do {
+            let fetchedTasks = try context.fetch(request)
+            
+            guard let task = fetchedTasks.first else {
+                print("Failed to find task with id \(id)")
+                
+                return nil
+            }
+            
+            return task
+        } catch {
+            print("Failed to get task with id \(id)")
+            
+            return nil
+        }
+    }
     
     func createTask(newTask: CreateTaskEntity) -> TaskEntity? {
         let task = Task(context: context)
@@ -22,7 +48,7 @@ class CoreDataManager: DBManager {
             
             print("New task created")
         } catch {
-            print(error.localizedDescription)
+            print("Failed to create task: \(error.localizedDescription)")
             
             return nil
         }
@@ -31,46 +57,30 @@ class CoreDataManager: DBManager {
     }
     
     func editTask(task: TaskEntity) -> Bool {
-        let request = Task.fetchRequest()
+        guard let taskToEdit = getTask(by: task.id) else {
+            return false
+        }
         
-        request.predicate = NSPredicate(format: "id = \"\(task.id)\"")
+        taskToEdit.content = task.content
+        taskToEdit.dueDate = task.dueDate
+        taskToEdit.isCompleted = task.isCompleted
         
         do {
-            let fetchedTasks = try context.fetch(request)
-            
-            guard let taskToEdit = fetchedTasks.first else{
-                print("Failed to edit task: Task with id \(task.id) does not exist")
-                
-                return false
-            }
-            
-            taskToEdit.content = task.content
-            taskToEdit.dueDate = task.dueDate
-            taskToEdit.isCompleted = task.isCompleted
-            
             try context.save()
             
             print("Task edited")
             
             return true
         } catch {
-            print(error.localizedDescription)
+            print("Failed to edit task: \(error.localizedDescription)")
             
             return false
         }
     }
     
     func deleteTask(id: UUID) -> Bool {
-        let request = Task.fetchRequest()
-        
-        request.predicate = NSPredicate(format: "id = \"\(id)\"")
-        
         do {
-            let fetchedTasks = try context.fetch(request)
-            
-            guard let taskToDelete = fetchedTasks.first else{
-                print("Failed to delete task: Task with id \(id) does not exist")
-                
+            guard let taskToDelete = getTask(by: id) else {
                 return false
             }
             
@@ -78,18 +88,14 @@ class CoreDataManager: DBManager {
             
             try context.save()
             
-            print("Task edited")
+            print("Task deleted")
             
             return true
         } catch {
-            print(error.localizedDescription)
+            print("Failed to delete task: \(error.localizedDescription)")
             
             return false
         }
-    }
-    
-    private func getSubtasks(for task: Task) -> [SubtaskEntity]? {
-        return []
     }
     
     func getTasks() -> [TaskEntity]? {
@@ -98,7 +104,7 @@ class CoreDataManager: DBManager {
             var taskEntities: [TaskEntity] = []
             
             for task in tasks {
-                guard let subtasks = getSubtasks(for: task) else {
+                guard let subtasks = getSubtasks(for: task.id) else {
                     return nil
                 }
                 
@@ -111,25 +117,113 @@ class CoreDataManager: DBManager {
             
             return taskEntities
         } catch {
-            print(error.localizedDescription)
+            print("Failed to get tasks: \(error.localizedDescription)")
             
             return nil
         }
     }
     
     func createSubtask(newSubtask: CreateSubtaskEntity) -> SubtaskEntity? {
-        return nil
+        guard let parentTask = getTask(by: newSubtask.parentTaskId) else {
+            return nil
+        }
+        
+        let subtask = Subtask(context: context)
+        subtask.content = newSubtask.content
+        subtask.isCompleted = false
+        subtask.parentTask = parentTask
+        subtask.id = UUID()
+        
+        do {
+            try context.save()
+            
+            print("New subtask created")
+        } catch {
+            print("Failed to create subtask: \(error.localizedDescription)")
+            
+            return nil
+        }
+        
+        return SubtaskEntity(from: subtask)
+    }
+    
+    private func getSubtask(by id: UUID) -> Subtask? {
+        let request = Subtask.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "id = \"\(id)\"")
+        
+        do {
+            let fetchedSubtasks = try context.fetch(request)
+            
+            guard let subtask = fetchedSubtasks.first else{
+                print("Failed to find subtask with id \(id)")
+                
+                return nil
+            }
+            
+            return subtask
+        } catch {
+            print("Failed to get subtask: \(error.localizedDescription)")
+            
+            return nil
+        }
     }
     
     func editSubtask(subtask: SubtaskEntity) -> Bool {
-        return false
+        guard let subtaskToEdit = getSubtask(by: subtask.id) else {
+            return false
+        }
+        
+        subtaskToEdit.content = subtask.content
+        subtaskToEdit.isCompleted = subtask.isCompleted
+        
+        do {
+            try context.save()
+            
+            print("Subtask edited")
+            
+            return true
+        } catch {
+            print("Failed to edit subtask: \(error.localizedDescription)")
+            
+            return false
+        }
     }
     
     func deleteSubtask(id: UUID) -> Bool {
-        return false
+        guard let subtaskToDelete = getSubtask(by: id) else {
+            return false
+        }
+        
+        do {
+            context.delete(subtaskToDelete)
+            
+            try context.save()
+            
+            print("Subtask deleted")
+            
+            return true
+        } catch {
+            print("Failed to delete subtask: \(error.localizedDescription)")
+            
+            return false
+        }
     }
     
-    func getSubtasks(for taskEntity: TaskEntity) -> [SubtaskEntity]? {
-        return [] //TODO!!!
+    func getSubtasks(for taskId: UUID) -> [SubtaskEntity]? {
+        let request = Subtask.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "parentTask.id = \"\(taskId)\"")
+        
+        do {
+            let fetchedSubtasks = try context.fetch(request)
+            let fetchedSubtaskEntities = fetchedSubtasks.map{subtask in SubtaskEntity(from: subtask)}
+            
+            return fetchedSubtaskEntities
+        } catch {
+            print("Failed to get subtasks: \(error.localizedDescription)")
+            
+            return nil
+        }
     }
 }

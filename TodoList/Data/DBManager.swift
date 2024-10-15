@@ -16,5 +16,5 @@ protocol DBManager {
     func createSubtask(newSubtask: CreateSubtaskEntity) -> SubtaskEntity?
     func editSubtask(subtask: SubtaskEntity) -> Bool
     func deleteSubtask(id: UUID) -> Bool
-    func getSubtasks(for taskEntity: TaskEntity) -> [SubtaskEntity]?
+    func getSubtasks(for taskId: UUID) -> [SubtaskEntity]?
 }

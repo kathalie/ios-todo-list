@@ -15,5 +15,20 @@ struct CreateSubtaskEntity {
 struct SubtaskEntity {
     let id: UUID
     let content: String
+    let isCompleted: Bool
     let parentTaskId: UUID
+    
+    init(from subtask: Subtask) {
+        self.id = subtask.id
+        self.content = subtask.content
+        self.isCompleted = subtask.isCompleted
+        self.parentTaskId = subtask.parentTask.id
+    }
+    
+    init(id: UUID, content: String, isCompleted: Bool, parentTaskId: UUID) {
+        self.id = id
+        self.content = content
+        self.isCompleted = isCompleted
+        self.parentTaskId = parentTaskId
+    }
 }
