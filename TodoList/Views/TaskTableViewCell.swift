@@ -15,15 +15,25 @@ protocol TaskEditorDelegate {
 final class TaskTableViewCell: UITableViewCell {
     @IBOutlet private weak var taskCompletionButton: UIButton!
     @IBOutlet private weak var taskLabel: UILabel!
-
+    @IBOutlet weak var dueDateLabel: UILabel!
+    
     var taskEntity: TaskEntity?
     var delegate: TaskEditorDelegate?
+    
+    
+    private func dueDateFormat(of date: Date) -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yy HH:mm:ss")
+        
+        return dateFormatter.string(from: date)
+    }
     
     func config(taskEntity: TaskEntity, delegate: TaskEditorDelegate) {
         self.taskEntity = taskEntity
         self.delegate = delegate
         
         taskLabel.text = taskEntity.content
+        dueDateLabel.text = dueDateFormat(of: taskEntity.dueDate)
         
         let tapRecogniser = UITapGestureRecognizer(
             target: self,
