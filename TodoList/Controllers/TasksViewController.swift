@@ -14,7 +14,8 @@ class TasksViewController: UITableViewController {
     }
     
     var taskEntities: [TaskEntity] = []
-    var dbManager: DBManager = CoreDataManager.shared
+    var dbManager: DBManager = RealmManager.shared
+//    var dbManager: DBManager = CoreDataManager.shared
     
     @IBAction func addTask(_ sender: Any) {
         print("Adding task")

@@ -31,4 +31,11 @@ struct SubtaskEntity {
         self.isCompleted = isCompleted
         self.parentTaskId = parentTaskId
     }
+    
+    init(from realmSubtask: SubtaskRealmModel) {
+        self.id = realmSubtask.id
+        self.content = realmSubtask.content
+        self.isCompleted = realmSubtask.isCompleted
+        self.parentTaskId = realmSubtask.parentTask!.id
+    }
 }

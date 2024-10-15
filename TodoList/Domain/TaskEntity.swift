@@ -34,4 +34,12 @@ struct TaskEntity {
         self.isCompleted = isCompleted
         self.subtasks = subtasks
     }
+    
+    init(from realmTask: TaskRealmModel, with subtasks: [SubtaskEntity] = []) {
+        self.id = realmTask.id
+        self.content = realmTask.content
+        self.dueDate = realmTask.dueDate
+        self.isCompleted = realmTask.isCompleted
+        self.subtasks = subtasks
+    }
 }
