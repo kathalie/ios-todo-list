@@ -14,8 +14,18 @@ class TasksViewController: UITableViewController {
     }
     
     var taskEntities: [TaskEntity] = []
-    var dbManager: DBManager = RealmManager.shared
-//    var dbManager: DBManager = CoreDataManager.shared
+    
+    enum DBManagers: String, CaseIterable {
+        case coreData = "CoreData"
+        case realm = "Realm"
+    }
+    
+    let dbManagers: [DBManagers: DBManager] = [
+        .coreData: CoreDataManager.shared,
+        .realm: RealmManager.shared
+    ]
+    
+    var dbManager: DBManager = CoreDataManager.shared
     
     @IBAction func addTask(_ sender: Any) {
         print("Adding task")
@@ -26,6 +36,14 @@ class TasksViewController: UITableViewController {
             placeholder: "Task",
             callback: {[weak self] input in self?.createTask(input)}
         )
+        
+//        let nav = UINavigationController(rootViewController: CreateTaskViewController())
+//        nav.modalPresentationStyle = .fullScreen
+//        nav.modalTransitionStyle = .coverVertical
+//        
+//        self.present(nav, animated: true, completion: { [weak self] in
+//            self?.loadTasks()
+//        })
     }
     
     override func viewDidLoad() {
@@ -123,5 +141,26 @@ extension TasksViewController: TaskEditorDelegate {
 extension TasksViewController: DBManagerDelegate {
     func getDBManager() -> DBManager {
         return dbManager
+    }
+}
+
+extension TasksViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        dbManagers.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let dbManager = DBManagers.allCases[row]
+        self.dbManager = self.dbManagers[dbManager]!
+        
+        loadTasks()
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        DBManagers.allCases[row].rawValue
     }
 }

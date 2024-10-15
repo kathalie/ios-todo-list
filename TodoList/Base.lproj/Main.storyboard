@@ -21,7 +21,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boH-aG-vwW">
-                                    <rect key="frame" x="332" y="0.0" width="45" height="45"/>
+                                    <rect key="frame" x="328" y="0.0" width="45" height="45"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="45" id="FXo-Zu-9Kz"/>
                                         <constraint firstAttribute="height" constant="45" id="i4e-CZ-DEI"/>
@@ -33,10 +33,23 @@
                                         <action selector="addTask:" destination="ygK-7o-Orr" eventType="touchUpInside" id="4gE-GJ-HNd"/>
                                     </connections>
                                 </button>
+                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRG-eb-0Tq">
+                                    <rect key="frame" x="8" y="-2.6666666666666679" width="320" height="50.333333333333343"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="CLg-NV-dZ6"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="dataSource" destination="ygK-7o-Orr" id="fe4-nc-D13"/>
+                                        <outlet property="delegate" destination="ygK-7o-Orr" id="T5d-TX-e4c"/>
+                                    </connections>
+                                </pickerView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="boH-aG-vwW" secondAttribute="trailing" constant="16" id="e8i-HZ-vAi"/>
+                                <constraint firstItem="boH-aG-vwW" firstAttribute="leading" secondItem="IRG-eb-0Tq" secondAttribute="trailing" id="EUk-tf-hny"/>
+                                <constraint firstItem="IRG-eb-0Tq" firstAttribute="centerY" secondItem="H4t-o0-32P" secondAttribute="centerY" id="Ybn-5z-Sjm"/>
+                                <constraint firstItem="IRG-eb-0Tq" firstAttribute="leading" secondItem="H4t-o0-32P" secondAttribute="leading" constant="8" id="cfR-u2-T1f"/>
+                                <constraint firstItem="IRG-eb-0Tq" firstAttribute="trailing" secondItem="boH-aG-vwW" secondAttribute="leading" id="e8i-HZ-vAi"/>
                                 <constraint firstItem="boH-aG-vwW" firstAttribute="centerY" secondItem="H4t-o0-32P" secondAttribute="centerY" id="yrC-ll-KSj"/>
                             </constraints>
                         </view>
@@ -70,7 +83,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mr-4m-iph">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mr-4m-iph">
                                                     <rect key="frame" x="0.0" y="25.333333333333336" width="328" height="21.333333333333336"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="zwp-gP-wO5"/>
@@ -235,28 +248,60 @@
             </objects>
             <point key="canvasLocation" x="2264.8854961832062" y="-83.098591549295776"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="PTb-En-cG0">
+        <!--Create Task View Controller-->
+        <scene sceneID="5wL-Zf-MnZ">
             <objects>
-                <viewController id="pCK-oF-OUB" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Nik-G7-rzw">
+                <viewController id="PTe-vx-bqp" customClass="CreateTaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4gJ-hr-IBJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KdT-wr-RHU">
-                                <rect key="frame" x="34" y="123" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ii6-Kk-1SV">
+                                <rect key="frame" x="8" y="75" width="377" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="we4-CV-B2M"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LlD-db-Ghd">
+                                <rect key="frame" x="8" y="125" width="377" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="IgH-4d-sdy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sTS-zl-zc6">
+                                <rect key="frame" x="8" y="173" width="377" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="z6o-hk-5m7"/>
+                                </constraints>
+                            </datePicker>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="rPf-bw-By7"/>
+                        <viewLayoutGuide key="safeArea" id="Olc-dx-JiJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="LlD-db-Ghd" secondAttribute="trailing" constant="8" id="D1R-5R-cXu"/>
+                            <constraint firstItem="sTS-zl-zc6" firstAttribute="leading" secondItem="4gJ-hr-IBJ" secondAttribute="leading" constant="8" id="Jx9-W3-2T0"/>
+                            <constraint firstAttribute="trailing" secondItem="sTS-zl-zc6" secondAttribute="trailing" constant="8" id="VN2-Nq-0w0"/>
+                            <constraint firstItem="LlD-db-Ghd" firstAttribute="top" secondItem="ii6-Kk-1SV" secondAttribute="bottom" id="i3c-a5-HbU"/>
+                            <constraint firstItem="sTS-zl-zc6" firstAttribute="top" secondItem="LlD-db-Ghd" secondAttribute="bottom" constant="8" id="mas-3i-VWR"/>
+                            <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="ii6-Kk-1SV" secondAttribute="trailing" constant="8" id="p11-1W-Vmh"/>
+                            <constraint firstItem="LlD-db-Ghd" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="8" id="p6q-Sw-Ndl"/>
+                            <constraint firstItem="ii6-Kk-1SV" firstAttribute="top" secondItem="Olc-dx-JiJ" secondAttribute="top" constant="16" id="r3s-fn-Six"/>
+                            <constraint firstItem="ii6-Kk-1SV" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="8" id="r61-aP-xM1"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dueDatePicker" destination="sTS-zl-zc6" id="fI5-DE-N9m"/>
+                        <outlet property="taskContentTextField" destination="LlD-db-Ghd" id="6Vp-JZ-aPJ"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Psh-wS-Ymr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jM4-PV-4KB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1434" y="-757"/>
+            <point key="canvasLocation" x="3188.5496183206105" y="-83.098591549295776"/>
         </scene>
     </scenes>
     <resources>

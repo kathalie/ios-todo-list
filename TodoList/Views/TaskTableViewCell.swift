@@ -33,7 +33,7 @@ final class TaskTableViewCell: UITableViewCell {
         self.delegate = delegate
         
         taskLabel.text = taskEntity.content
-        dueDateLabel.text = dueDateFormat(of: taskEntity.dueDate)
+//        dueDateLabel.text = dueDateFormat(of: taskEntity.dueDate)
         
         let tapRecogniser = UITapGestureRecognizer(
             target: self,
