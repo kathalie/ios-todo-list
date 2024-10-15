@@ -30,13 +30,13 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system"/>
                                     <connections>
-                                        <action selector="addTask:" destination="ygK-7o-Orr" eventType="touchUpInside" id="4gE-GJ-HNd"/>
+                                        <segue destination="PTe-vx-bqp" kind="show" identifier="go_to_create_task" id="Y1y-oR-6ZU"/>
                                     </connections>
                                 </button>
                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRG-eb-0Tq">
-                                    <rect key="frame" x="8" y="-2.6666666666666679" width="320" height="50.333333333333343"/>
+                                    <rect key="frame" x="8" y="-28" width="320" height="101"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="CLg-NV-dZ6"/>
+                                        <constraint firstAttribute="height" constant="100" id="CLg-NV-dZ6"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="dataSource" destination="ygK-7o-Orr" id="fe4-nc-D13"/>
@@ -55,14 +55,14 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="task_cell" id="kCS-jP-WCt" customClass="TaskTableViewCell" customModule="TodoList" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="95" width="393" height="46.666667938232422"/>
+                                <rect key="frame" x="0.0" y="95" width="393" height="62.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kCS-jP-WCt" id="e9Q-iX-oQs">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="46.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="62.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocp-CT-Dxf">
-                                            <rect key="frame" x="16" y="11" width="25" height="25"/>
+                                            <rect key="frame" x="16" y="19" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="Atd-w9-ZZk"/>
                                                 <constraint firstAttribute="height" constant="25" id="pbu-G2-fTj"/>
@@ -72,10 +72,10 @@
                                             <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pZ-dK-1ln">
-                                            <rect key="frame" x="49" y="0.0" width="328" height="46.666666666666664"/>
+                                            <rect key="frame" x="49" y="0.0" width="328" height="62.666666666666664"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CD-Py-mfz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="328" height="21.333333333333332"/>
+                                                    <rect key="frame" x="0.0" y="7.9999999999999982" width="328" height="21.333333333333329"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21.329999999999998" id="TRg-NI-ByU"/>
                                                     </constraints>
@@ -84,7 +84,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mr-4m-iph">
-                                                    <rect key="frame" x="0.0" y="25.333333333333336" width="328" height="21.333333333333336"/>
+                                                    <rect key="frame" x="0.0" y="33.333333333333336" width="328" height="21.333333333333336"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="zwp-gP-wO5"/>
                                                     </constraints>
@@ -97,8 +97,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="4CD-Py-mfz" secondAttribute="trailing" id="12S-g5-vMh"/>
                                                 <constraint firstItem="4CD-Py-mfz" firstAttribute="leading" secondItem="4pZ-dK-1ln" secondAttribute="leading" id="2k3-ii-0hu"/>
-                                                <constraint firstAttribute="bottom" secondItem="9mr-4m-iph" secondAttribute="bottom" id="3ua-pP-G1C"/>
-                                                <constraint firstItem="4CD-Py-mfz" firstAttribute="top" secondItem="4pZ-dK-1ln" secondAttribute="top" id="82G-l4-2Iz"/>
+                                                <constraint firstAttribute="bottom" secondItem="9mr-4m-iph" secondAttribute="bottom" constant="8" id="3ua-pP-G1C"/>
+                                                <constraint firstItem="4CD-Py-mfz" firstAttribute="top" secondItem="4pZ-dK-1ln" secondAttribute="top" constant="8" id="82G-l4-2Iz"/>
                                                 <constraint firstItem="9mr-4m-iph" firstAttribute="top" secondItem="4CD-Py-mfz" secondAttribute="bottom" constant="4" id="ZUa-kL-wcG"/>
                                                 <constraint firstItem="9mr-4m-iph" firstAttribute="leading" secondItem="4pZ-dK-1ln" secondAttribute="leading" id="km9-dd-33l"/>
                                                 <constraint firstAttribute="trailing" secondItem="9mr-4m-iph" secondAttribute="trailing" id="y3v-X9-zJc"/>
@@ -257,7 +257,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ii6-Kk-1SV">
-                                <rect key="frame" x="8" y="75" width="377" height="50"/>
+                                <rect key="frame" x="8" y="119" width="377" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="we4-CV-B2M"/>
                                 </constraints>
@@ -266,19 +266,38 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LlD-db-Ghd">
-                                <rect key="frame" x="8" y="125" width="377" height="40"/>
+                                <rect key="frame" x="8" y="169" width="377" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IgH-4d-sdy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="taskContentChanged:" destination="PTe-vx-bqp" eventType="editingDidEnd" id="09Q-GM-cdl"/>
+                                    <outlet property="delegate" destination="PTe-vx-bqp" id="60P-sW-9Cj"/>
+                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sTS-zl-zc6">
-                                <rect key="frame" x="8" y="173" width="377" height="60"/>
+                                <rect key="frame" x="8" y="217" width="377" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="z6o-hk-5m7"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="dueDateChanged:" destination="PTe-vx-bqp" eventType="valueChanged" id="z8R-c5-c9r"/>
+                                </connections>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9he-tv-Psq">
+                                <rect key="frame" x="141" y="759" width="111" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="GiE-ZY-fuc"/>
+                                    <constraint firstAttribute="width" constant="111" id="JYr-51-Cmd"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create task"/>
+                                <connections>
+                                    <action selector="createTask:" destination="PTe-vx-bqp" eventType="touchUpInside" id="4df-rW-2fe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Olc-dx-JiJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -287,21 +306,23 @@
                             <constraint firstItem="sTS-zl-zc6" firstAttribute="leading" secondItem="4gJ-hr-IBJ" secondAttribute="leading" constant="8" id="Jx9-W3-2T0"/>
                             <constraint firstAttribute="trailing" secondItem="sTS-zl-zc6" secondAttribute="trailing" constant="8" id="VN2-Nq-0w0"/>
                             <constraint firstItem="LlD-db-Ghd" firstAttribute="top" secondItem="ii6-Kk-1SV" secondAttribute="bottom" id="i3c-a5-HbU"/>
+                            <constraint firstItem="9he-tv-Psq" firstAttribute="centerX" secondItem="Olc-dx-JiJ" secondAttribute="centerX" id="mZ8-MW-AX5"/>
                             <constraint firstItem="sTS-zl-zc6" firstAttribute="top" secondItem="LlD-db-Ghd" secondAttribute="bottom" constant="8" id="mas-3i-VWR"/>
                             <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="ii6-Kk-1SV" secondAttribute="trailing" constant="8" id="p11-1W-Vmh"/>
                             <constraint firstItem="LlD-db-Ghd" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="8" id="p6q-Sw-Ndl"/>
                             <constraint firstItem="ii6-Kk-1SV" firstAttribute="top" secondItem="Olc-dx-JiJ" secondAttribute="top" constant="16" id="r3s-fn-Six"/>
                             <constraint firstItem="ii6-Kk-1SV" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="8" id="r61-aP-xM1"/>
+                            <constraint firstItem="Olc-dx-JiJ" firstAttribute="bottom" secondItem="9he-tv-Psq" secondAttribute="bottom" constant="24" id="t4V-jb-zfs"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hmh-M4-czh"/>
                     <connections>
-                        <outlet property="dueDatePicker" destination="sTS-zl-zc6" id="fI5-DE-N9m"/>
-                        <outlet property="taskContentTextField" destination="LlD-db-Ghd" id="6Vp-JZ-aPJ"/>
+                        <outlet property="taskContentTextField" destination="LlD-db-Ghd" id="xwM-rg-uYk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jM4-PV-4KB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3188.5496183206105" y="-83.098591549295776"/>
+            <point key="canvasLocation" x="2265" y="-785"/>
         </scene>
     </scenes>
     <resources>

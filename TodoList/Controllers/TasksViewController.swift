@@ -7,10 +7,15 @@
 
 import UIKit
 
-class TasksViewController: UITableViewController {
+class TasksViewController: UITableViewController, CreateTaskDelegate {
     struct Const {
         static let cellReuseIdentifier = "task_cell"
         static let goToSubtasks = "go_to_subtasks"
+        static let goToCreateTask = "go_to_create_task"
+    }
+    
+    @IBAction func createTask(_ sender: UIButton) {
+        performSegue(withIdentifier: Const.goToCreateTask, sender: self)
     }
     
     var taskEntities: [TaskEntity] = []
@@ -27,32 +32,13 @@ class TasksViewController: UITableViewController {
     
     var dbManager: DBManager = CoreDataManager.shared
     
-    @IBAction func addTask(_ sender: Any) {
-        print("Adding task")
-        
-        self.showInpulert(
-            title: "Creating a task",
-            message: "Enter the task to the text field below.",
-            placeholder: "Task",
-            callback: {[weak self] input in self?.createTask(input)}
-        )
-        
-//        let nav = UINavigationController(rootViewController: CreateTaskViewController())
-//        nav.modalPresentationStyle = .fullScreen
-//        nav.modalTransitionStyle = .coverVertical
-//        
-//        self.present(nav, animated: true, completion: { [weak self] in
-//            self?.loadTasks()
-//        })
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadTasks()
     }
     
-    private func loadTasks() {
+    func loadTasks() {
         guard let taskEntities = dbManager.getTasks()
         else {
             print("Failed to load tasks")
@@ -64,8 +50,8 @@ class TasksViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    private func createTask(_ taskContent: String) {
-        let newTask = CreateTaskEntity(content: taskContent, dueDate: Date.now)
+    func createTask(content: String, dueDate: Date) {
+        let newTask = CreateTaskEntity(content: content, dueDate: dueDate)
         
         _ = dbManager.createTask(newTask: newTask)
         
@@ -106,6 +92,9 @@ class TasksViewController: UITableViewController {
                 taskEntity: taskEntity,
                 delegate: self
             )
+        case Const.goToCreateTask:
+            let createTaskVC = segue.destination as! CreateTaskViewController
+            createTaskVC.delegate = self
         default: break
         }
     }

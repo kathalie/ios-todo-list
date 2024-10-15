@@ -7,15 +7,39 @@
 
 import UIKit
 
+protocol CreateTaskDelegate {
+    func createTask(content: String, dueDate: Date)
+//    func loadTasks()
+}
+
 class CreateTaskViewController: UIViewController {
+    var delegate: CreateTaskDelegate?
+    private var taskContent: String = ""
+    private var dueDate: Date = Date()
+        
     @IBOutlet weak var taskContentTextField: UITextField!
-    @IBOutlet weak var dueDatePicker: UIDatePicker!
+    
+    @IBAction func taskContentChanged(_ sender: UITextField) {
+        self.taskContent = sender.text ?? ""
+    }
+    
+    @IBAction func dueDateChanged(_ sender: UIDatePicker) {
+        self.dueDate = sender.date
+    }
+    
+    @IBAction func createTask(_ sender: Any) {
+        delegate?.createTask(content: self.taskContent, dueDate: self.dueDate)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        dueDatePicker.date = Date()
     }
-    
-    
+}
+
+extension CreateTaskViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
 }
