@@ -6,16 +6,13 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class TasksViewController: UITableViewController, CreateTaskDelegate {
     struct Const {
         static let cellReuseIdentifier = "task_cell"
         static let goToSubtasks = "go_to_subtasks"
         static let goToCreateTask = "go_to_create_task"
-    }
-    
-    @IBAction func createTask(_ sender: UIButton) {
-        performSegue(withIdentifier: Const.goToCreateTask, sender: self)
     }
     
     var taskEntities: [TaskEntity] = []
@@ -32,9 +29,38 @@ class TasksViewController: UITableViewController, CreateTaskDelegate {
     
     var dbManager: DBManager = CoreDataManager.shared
     
+//    var laSuccess: Bool = false {
+//        didSet {
+//            tableView.isHidden = !laSuccess
+//        }
+//    }
+    
+//    func askAuthentication() {
+//        var context = LAContext()
+//        
+//        var error: NSError?
+//        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
+//            print(error?.localizedDescription ?? "Can't evaluate policy")
+//
+//            return
+//        }
+//        
+//        Task {
+//            do {
+//                try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Log in to your account")
+//                state = .loggedin
+//            } catch let error {
+//                print(error.localizedDescription)
+//                // Fall back to a asking for username and password.
+//                // ...
+//            }
+//        }
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        askAuthentication()
         loadTasks()
     }
     

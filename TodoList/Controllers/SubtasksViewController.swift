@@ -11,9 +11,10 @@ protocol DBManagerDelegate {
     func getDBManager() -> DBManager
 }
 
-class SubtasksViewController: UITableViewController {
+class SubtasksViewController: UITableViewController, CreateSubtaskDelegate {
     struct Const {
         static let cellReuseIdentifier = "subtask_cell"
+        static let goToCreateSubtask = "go_to_create_subtask"
     }
     
     var taskEntity: TaskEntity?
@@ -21,15 +22,6 @@ class SubtasksViewController: UITableViewController {
     var delegate: DBManagerDelegate?
     
     @IBOutlet private weak var taskLabel: UILabel!
-    @IBAction private func addSubtask(_ sender: UIButton) {
-        print("Adding subtask")
-        
-        self.showInpulert(
-            title: "Creating a task",
-            message: "Enter the task to the text field below.",
-            placeholder: "Task",
-            callback: {[weak self] input in self?.createSubtask(input)})
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +53,7 @@ class SubtasksViewController: UITableViewController {
         self.delegate = delegate
     }
     
-    private func createSubtask(_ subtaskContent: String) {
+    func createSubtask(content subtaskContent: String) {
         guard let taskEntity else {
             showErrorAlert(title: "Somthing went wrong", message: "Failed to create a subtask")
             
@@ -113,6 +105,15 @@ class SubtasksViewController: UITableViewController {
 
             subtaskEntities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case Const.goToCreateSubtask:
+            let createSubtaskVC = segue.destination as! CreateSubtaskViewController
+            createSubtaskVC.delegate = self
+        default: break
         }
     }
 }

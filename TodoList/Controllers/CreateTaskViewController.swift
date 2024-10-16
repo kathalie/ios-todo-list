@@ -9,7 +9,6 @@ import UIKit
 
 protocol CreateTaskDelegate {
     func createTask(content: String, dueDate: Date)
-//    func loadTasks()
 }
 
 class CreateTaskViewController: UIViewController {
@@ -31,10 +30,6 @@ class CreateTaskViewController: UIViewController {
         delegate?.createTask(content: self.taskContent, dueDate: self.dueDate)
         
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
     }
 }
 

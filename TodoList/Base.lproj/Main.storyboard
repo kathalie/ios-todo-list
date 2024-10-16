@@ -153,7 +153,7 @@
             </objects>
             <point key="canvasLocation" x="507.63358778625951" y="-83.098591549295776"/>
         </scene>
-        <!--Subtasks View Controller-->
+        <!--Subtasks-->
         <scene sceneID="M8t-M3-QwY">
             <objects>
                 <tableViewController id="WXr-cY-qC6" customClass="SubtasksViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
@@ -175,7 +175,7 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system"/>
                                     <connections>
-                                        <action selector="addSubtask:" destination="WXr-cY-qC6" eventType="touchUpInside" id="EOW-MY-ibO"/>
+                                        <segue destination="D1g-9C-rFz" kind="show" identifier="go_to_create_subtask" id="u2s-A4-ea9"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoO-Sz-fkE">
@@ -196,14 +196,14 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="subtask_cell" id="1yP-0W-Van" customClass="SubtaskTableViewCell" customModule="TodoList" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="95" width="393" height="43.666667938232422"/>
+                                <rect key="frame" x="0.0" y="95" width="393" height="42.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1yP-0W-Van" id="3DN-pE-ZYs">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="42.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymo-l8-I0T">
-                                            <rect key="frame" x="45" y="9.3333333333333357" width="25" height="25"/>
+                                            <rect key="frame" x="45" y="9" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="J7r-d5-grI"/>
                                                 <constraint firstAttribute="height" constant="25" id="awC-RB-QnY"/>
@@ -213,7 +213,7 @@
                                             <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3WW-7Y-r8R">
-                                            <rect key="frame" x="86" y="11.000000000000002" width="271" height="21.666666666666671"/>
+                                            <rect key="frame" x="86" y="11.000000000000002" width="271" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -239,7 +239,7 @@
                             <outlet property="delegate" destination="WXr-cY-qC6" id="8tK-vB-lG1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Con-qd-9BP"/>
+                    <navigationItem key="navigationItem" title="Subtasks" id="Con-qd-9BP"/>
                     <connections>
                         <outlet property="taskLabel" destination="FoO-Sz-fkE" id="J6w-pB-cDA"/>
                     </connections>
@@ -257,7 +257,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ii6-Kk-1SV">
-                                <rect key="frame" x="8" y="119" width="377" height="50"/>
+                                <rect key="frame" x="16" y="119" width="361" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="we4-CV-B2M"/>
                                 </constraints>
@@ -266,7 +266,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LlD-db-Ghd">
-                                <rect key="frame" x="8" y="169" width="377" height="40"/>
+                                <rect key="frame" x="16" y="169" width="361" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IgH-4d-sdy"/>
                                 </constraints>
@@ -277,15 +277,6 @@
                                     <outlet property="delegate" destination="PTe-vx-bqp" id="60P-sW-9Cj"/>
                                 </connections>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sTS-zl-zc6">
-                                <rect key="frame" x="8" y="217" width="377" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="z6o-hk-5m7"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="dueDateChanged:" destination="PTe-vx-bqp" eventType="valueChanged" id="z8R-c5-c9r"/>
-                                </connections>
-                            </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9he-tv-Psq">
                                 <rect key="frame" x="141" y="759" width="111" height="35"/>
                                 <constraints>
@@ -293,25 +284,54 @@
                                     <constraint firstAttribute="width" constant="111" id="JYr-51-Cmd"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Create task"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create"/>
                                 <connections>
                                     <action selector="createTask:" destination="PTe-vx-bqp" eventType="touchUpInside" id="4df-rW-2fe"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaX-fc-Nar">
+                                <rect key="frame" x="16" y="225" width="361" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFM-PA-HVT">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sTS-zl-zc6">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="50"/>
+                                        <connections>
+                                            <action selector="dueDateChanged:" destination="PTe-vx-bqp" eventType="valueChanged" id="z8R-c5-c9r"/>
+                                        </connections>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="sTS-zl-zc6" firstAttribute="leading" secondItem="HFM-PA-HVT" secondAttribute="leading" id="3fS-MM-KNl"/>
+                                    <constraint firstItem="HFM-PA-HVT" firstAttribute="leading" secondItem="gaX-fc-Nar" secondAttribute="leading" id="3kz-hr-F6n"/>
+                                    <constraint firstAttribute="bottom" secondItem="HFM-PA-HVT" secondAttribute="bottom" id="846-1I-Oje"/>
+                                    <constraint firstAttribute="trailing" secondItem="sTS-zl-zc6" secondAttribute="trailing" id="KAh-DN-yIu"/>
+                                    <constraint firstAttribute="bottom" secondItem="sTS-zl-zc6" secondAttribute="bottom" id="Tn6-NN-qZ8"/>
+                                    <constraint firstAttribute="trailing" secondItem="HFM-PA-HVT" secondAttribute="trailing" constant="16" id="a7B-Hz-H2X"/>
+                                    <constraint firstItem="sTS-zl-zc6" firstAttribute="top" secondItem="gaX-fc-Nar" secondAttribute="top" id="jzu-6t-FaV"/>
+                                    <constraint firstItem="HFM-PA-HVT" firstAttribute="top" secondItem="gaX-fc-Nar" secondAttribute="top" id="osi-sK-gL2"/>
+                                    <constraint firstAttribute="height" constant="50" id="seJ-TF-qyy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Olc-dx-JiJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="LlD-db-Ghd" secondAttribute="trailing" constant="8" id="D1R-5R-cXu"/>
-                            <constraint firstItem="sTS-zl-zc6" firstAttribute="leading" secondItem="4gJ-hr-IBJ" secondAttribute="leading" constant="8" id="Jx9-W3-2T0"/>
-                            <constraint firstAttribute="trailing" secondItem="sTS-zl-zc6" secondAttribute="trailing" constant="8" id="VN2-Nq-0w0"/>
+                            <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="LlD-db-Ghd" secondAttribute="trailing" constant="16" id="D1R-5R-cXu"/>
+                            <constraint firstItem="gaX-fc-Nar" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="16" id="HQP-fL-jO0"/>
+                            <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="gaX-fc-Nar" secondAttribute="trailing" constant="16" id="LJt-kR-yyb"/>
+                            <constraint firstItem="gaX-fc-Nar" firstAttribute="top" secondItem="LlD-db-Ghd" secondAttribute="bottom" constant="16" id="g2h-Y7-eWL"/>
                             <constraint firstItem="LlD-db-Ghd" firstAttribute="top" secondItem="ii6-Kk-1SV" secondAttribute="bottom" id="i3c-a5-HbU"/>
                             <constraint firstItem="9he-tv-Psq" firstAttribute="centerX" secondItem="Olc-dx-JiJ" secondAttribute="centerX" id="mZ8-MW-AX5"/>
-                            <constraint firstItem="sTS-zl-zc6" firstAttribute="top" secondItem="LlD-db-Ghd" secondAttribute="bottom" constant="8" id="mas-3i-VWR"/>
-                            <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="ii6-Kk-1SV" secondAttribute="trailing" constant="8" id="p11-1W-Vmh"/>
-                            <constraint firstItem="LlD-db-Ghd" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="8" id="p6q-Sw-Ndl"/>
+                            <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="ii6-Kk-1SV" secondAttribute="trailing" constant="16" id="p11-1W-Vmh"/>
+                            <constraint firstItem="LlD-db-Ghd" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="16" id="p6q-Sw-Ndl"/>
                             <constraint firstItem="ii6-Kk-1SV" firstAttribute="top" secondItem="Olc-dx-JiJ" secondAttribute="top" constant="16" id="r3s-fn-Six"/>
-                            <constraint firstItem="ii6-Kk-1SV" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="8" id="r61-aP-xM1"/>
+                            <constraint firstItem="ii6-Kk-1SV" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="16" id="r61-aP-xM1"/>
                             <constraint firstItem="Olc-dx-JiJ" firstAttribute="bottom" secondItem="9he-tv-Psq" secondAttribute="bottom" constant="24" id="t4V-jb-zfs"/>
                         </constraints>
                     </view>
@@ -323,6 +343,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jM4-PV-4KB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2265" y="-785"/>
+        </scene>
+        <!--Create Subtask View Controller-->
+        <scene sceneID="cwG-cV-NKF">
+            <objects>
+                <viewController id="D1g-9C-rFz" customClass="CreateSubtaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TUl-Xo-upn">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Subtask" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbL-qg-ohM">
+                                <rect key="frame" x="16" y="103" width="361" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="L67-cS-OgH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subtask" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NGY-ej-Za8">
+                                <rect key="frame" x="16" y="153" width="361" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bgD-0I-uBD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="subtaskContentChanged:" destination="D1g-9C-rFz" eventType="editingDidEnd" id="MkJ-1e-B9a"/>
+                                    <outlet property="delegate" destination="D1g-9C-rFz" id="vQP-1V-utn"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEp-Xa-SJr">
+                                <rect key="frame" x="159" y="759" width="75" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="rF1-yd-Oeg"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Create"/>
+                                <connections>
+                                    <action selector="createSubtask:" destination="D1g-9C-rFz" eventType="touchUpInside" id="1ii-nl-UQg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bRe-gX-jwz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bRe-gX-jwz" firstAttribute="trailing" secondItem="RbL-qg-ohM" secondAttribute="trailing" constant="16" id="Cpj-ie-TCI"/>
+                            <constraint firstItem="RbL-qg-ohM" firstAttribute="leading" secondItem="bRe-gX-jwz" secondAttribute="leading" constant="16" id="G4L-Ry-3Bz"/>
+                            <constraint firstItem="RbL-qg-ohM" firstAttribute="top" secondItem="bRe-gX-jwz" secondAttribute="top" id="Nsb-Yj-q2A"/>
+                            <constraint firstItem="NGY-ej-Za8" firstAttribute="leading" secondItem="bRe-gX-jwz" secondAttribute="leading" constant="16" id="Sps-by-h7F"/>
+                            <constraint firstItem="NGY-ej-Za8" firstAttribute="top" secondItem="RbL-qg-ohM" secondAttribute="bottom" id="Ty7-tf-AtI"/>
+                            <constraint firstItem="bRe-gX-jwz" firstAttribute="trailing" secondItem="NGY-ej-Za8" secondAttribute="trailing" constant="16" id="dvA-m7-Bau"/>
+                            <constraint firstItem="TEp-Xa-SJr" firstAttribute="centerX" secondItem="bRe-gX-jwz" secondAttribute="centerX" id="lpX-iI-ce0"/>
+                            <constraint firstItem="bRe-gX-jwz" firstAttribute="bottom" secondItem="TEp-Xa-SJr" secondAttribute="bottom" constant="24" id="xLc-UD-DqR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jbO-5P-YqO"/>
+                    <connections>
+                        <outlet property="subtaskContentTextField" destination="NGY-ej-Za8" id="Sd6-0x-Nyc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cGv-Mv-LcK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3276" y="-785"/>
         </scene>
     </scenes>
     <resources>

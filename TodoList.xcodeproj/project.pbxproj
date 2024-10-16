@@ -11,6 +11,7 @@
 		8C6651842CBEEFE100E12710 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651832CBEEFE100E12710 /* RealmManager.swift */; };
 		8C6651862CBEEFEC00E12710 /* RealmModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651852CBEEFEC00E12710 /* RealmModels.swift */; };
 		8C6651882CBF034F00E12710 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651872CBF034F00E12710 /* CreateTaskViewController.swift */; };
+		8C6651C52CBFFBF800E12710 /* CreateSubtaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651C42CBFFBF800E12710 /* CreateSubtaskViewController.swift */; };
 		8C88C3942CB5834A00A1D174 /* SubtasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */; };
 		8C88C3972CB59EF000A1D174 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */; };
 		8C88C39B2CB5A00A00A1D174 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */; };
@@ -37,6 +38,7 @@
 		8C6651832CBEEFE100E12710 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		8C6651852CBEEFEC00E12710 /* RealmModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModels.swift; sourceTree = "<group>"; };
 		8C6651872CBF034F00E12710 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
+		8C6651C42CBFFBF800E12710 /* CreateSubtaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubtaskViewController.swift; sourceTree = "<group>"; };
 		8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtasksViewController.swift; sourceTree = "<group>"; };
 		8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				8C88C39C2CB5AED500A1D174 /* ViewController+Alerts.swift */,
 				8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */,
 				8C6651872CBF034F00E12710 /* CreateTaskViewController.swift */,
+				8C6651C42CBFFBF800E12710 /* CreateSubtaskViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				8CA7C3992CBDAD86006F32B8 /* Subtask+CoreDataProperties.swift in Sources */,
 				8CBD27462CB48FE100E413E3 /* TodoList.xcdatamodeld in Sources */,
 				8CA7C3892CBC69AE006F32B8 /* CoreDataManager.swift in Sources */,
+				8C6651C52CBFFBF800E12710 /* CreateSubtaskViewController.swift in Sources */,
 				8C88C3972CB59EF000A1D174 /* TaskTableViewCell.swift in Sources */,
 				8C6651882CBF034F00E12710 /* CreateTaskViewController.swift in Sources */,
 			);
