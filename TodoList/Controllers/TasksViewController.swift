@@ -8,7 +8,7 @@
 import UIKit
 import LocalAuthentication
 
-class TasksViewController: UITableViewController, CreateTaskDelegate {
+class TasksViewController: UITableViewController {
     struct Const {
         static let cellReuseIdentifier = "task_cell"
         static let goToSubtasks = "go_to_subtasks"
@@ -16,22 +16,32 @@ class TasksViewController: UITableViewController, CreateTaskDelegate {
         static let goToSettings = "go_to_settings"
     }
     
-    var taskEntities: [TaskEntity] = []
-    
-    enum DBManagers: String, CaseIterable {
-        case coreData = "CoreData"
-        case realm = "Realm"
-    }
+    let localNotificationService = LocalNotificationsService.shared
     
     let dbManagers: [DBManagers: DBManager] = [
         .coreData: CoreDataManager.shared,
         .realm: RealmManager.shared
     ]
     
-    var dbManager: DBManager = CoreDataManager.shared
+    var dbManager: DBManager {
+        let dbManagerRaw = UserDefaults.standard.string(forKey: UserDefaultKeys.dbManager.rawValue) ?? DBManagers.coreData.rawValue
+        
+        let dbManagerCase = DBManagers(rawValue: dbManagerRaw) ?? DBManagers.coreData
+        
+        print("DB Manager: \(dbManagerRaw)")
+        
+        return dbManagers[dbManagerCase]!
+    }
     
-    let localNotificationService = LocalNotificationsService.shared
+    var localNotificationsAllowed: Bool {
+        let allowed = UserDefaults.standard.bool(forKey: UserDefaultKeys.localNotificationsAllowed.rawValue)
+        
+        print("Local notifications allowed: \(allowed)")
+        
+        return allowed
+    }
     
+    var taskEntities: [TaskEntity] = []
 //    var laSuccess: Bool = false {
 //        didSet {
 //            tableView.isHidden = !laSuccess
@@ -79,22 +89,6 @@ class TasksViewController: UITableViewController, CreateTaskDelegate {
         self.tableView.reloadData()
     }
     
-    func createTask(content: String, dueDate: Date) {
-        let newTask = CreateTaskEntity(content: content, dueDate: dueDate)
-        
-        _ = dbManager.createTask(newTask: newTask)
-        
-        Task {
-            await localNotificationService.sendNotification(
-                on: dueDate,
-                title: "The following task is due now",
-                body: content
-            )
-        }
-        
-        loadTasks()
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         taskEntities.count
     }
@@ -132,6 +126,9 @@ class TasksViewController: UITableViewController, CreateTaskDelegate {
         case Const.goToCreateTask:
             let createTaskVC = segue.destination as! CreateTaskViewController
             createTaskVC.delegate = self
+        case Const.goToSettings:
+            let settingsVC = segue.destination as! SettingsTableViewController
+            settingsVC.delegate = self
         default: break
         }
     }
@@ -170,23 +167,26 @@ extension TasksViewController: DBManagerDelegate {
     }
 }
 
-extension TasksViewController: UIPickerViewDataSource, UIPickerViewDelegate {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        dbManagers.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let dbManager = DBManagers.allCases[row]
-        self.dbManager = self.dbManagers[dbManager]!
-        
+extension TasksViewController: SettingsTableViewControllerDelegate {
+    func update() {
         loadTasks()
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        DBManagers.allCases[row].rawValue
+}
+
+extension TasksViewController: CreateTaskDelegate {
+    func createTask(content: String, dueDate: Date) {
+        let newTask = CreateTaskEntity(content: content, dueDate: dueDate)
+        
+        _ = dbManager.createTask(newTask: newTask)
+        
+        Task {
+            await localNotificationService.sendNotification(
+                on: dueDate,
+                title: "The following task is due now",
+                body: content
+            )
+        }
+        
+        loadTasks()
     }
 }
