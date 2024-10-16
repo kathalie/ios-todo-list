@@ -29,6 +29,8 @@ class TasksViewController: UITableViewController, CreateTaskDelegate {
     
     var dbManager: DBManager = CoreDataManager.shared
     
+    let localNotificationService = LocalNotificationsService.shared
+    
 //    var laSuccess: Bool = false {
 //        didSet {
 //            tableView.isHidden = !laSuccess
@@ -80,6 +82,14 @@ class TasksViewController: UITableViewController, CreateTaskDelegate {
         let newTask = CreateTaskEntity(content: content, dueDate: dueDate)
         
         _ = dbManager.createTask(newTask: newTask)
+        
+        Task {
+            await localNotificationService.sendNotification(
+                on: dueDate,
+                title: "The following task is due now",
+                body: content
+            )
+        }
         
         loadTasks()
     }

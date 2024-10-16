@@ -18,7 +18,7 @@ struct SubtaskEntity {
     let isCompleted: Bool
     let parentTaskId: UUID
     
-    init(from subtask: Subtask) {
+    init(from subtask: TodoSubtask) {
         self.id = subtask.id
         self.content = subtask.content
         self.isCompleted = subtask.isCompleted

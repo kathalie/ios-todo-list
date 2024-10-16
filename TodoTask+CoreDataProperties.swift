@@ -1,8 +1,8 @@
 //
-//  Task+CoreDataProperties.swift
+//  TodoTask+CoreDataProperties.swift
 //  TodoList
 //
-//  Created by Kathryn Verkhogliad on 14.10.2024.
+//  Created by Kathryn Verkhogliad on 16.10.2024.
 //
 //
 
@@ -10,28 +10,28 @@ import Foundation
 import CoreData
 
 
-extension Task {
+extension TodoTask {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Task> {
-        return NSFetchRequest<Task>(entityName: "Task")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<TodoTask> {
+        return NSFetchRequest<TodoTask>(entityName: "TodoTask")
     }
 
     @NSManaged public var content: String
-    @NSManaged public var isCompleted: Bool
     @NSManaged public var dueDate: Date
     @NSManaged public var id: UUID
+    @NSManaged public var isCompleted: Bool
     @NSManaged public var subtasks: NSSet
 
 }
 
 // MARK: Generated accessors for subtasks
-extension Task {
+extension TodoTask {
 
     @objc(addSubtasksObject:)
-    @NSManaged public func addToSubtasks(_ value: Subtask)
+    @NSManaged public func addToSubtasks(_ value: TodoSubtask)
 
     @objc(removeSubtasksObject:)
-    @NSManaged public func removeFromSubtasks(_ value: Subtask)
+    @NSManaged public func removeFromSubtasks(_ value: TodoSubtask)
 
     @objc(addSubtasks:)
     @NSManaged public func addToSubtasks(_ values: NSSet)
@@ -41,6 +41,6 @@ extension Task {
 
 }
 
-extension Task : Identifiable {
+extension TodoTask : Identifiable {
 
 }

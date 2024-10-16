@@ -19,7 +19,7 @@ struct TaskEntity {
     let dueDate: Date
     let subtasks: [SubtaskEntity]
     
-    init(from task: Task, with subtasks: [SubtaskEntity] = []) {
+    init(from task: TodoTask, with subtasks: [SubtaskEntity] = []) {
         self.id = task.id
         self.content = task.content
         self.dueDate = task.dueDate

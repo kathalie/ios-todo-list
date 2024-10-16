@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22222" systemVersion="23E214" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Subtask" representedClassName=".Subtask" syncable="YES">
+    <entity name="TodoSubtask" representedClassName=".TodoSubtask" syncable="YES">
         <attribute name="content" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <relationship name="parentTask" maxCount="1" deletionRule="No Action" destinationEntity="Task" inverseName="subtasks" inverseEntity="Task"/>
+        <relationship name="parentTask" maxCount="1" deletionRule="No Action" destinationEntity="TodoTask" inverseName="subtasks" inverseEntity="TodoTask"/>
     </entity>
-    <entity name="Task" representedClassName=".Task" syncable="YES">
+    <entity name="TodoTask" representedClassName=".TodoTask" syncable="YES">
         <attribute name="content" attributeType="String"/>
         <attribute name="dueDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isCompleted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <relationship name="subtasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Subtask" inverseName="parentTask" inverseEntity="Subtask"/>
+        <relationship name="subtasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TodoSubtask" inverseName="parentTask" inverseEntity="TodoSubtask"/>
     </entity>
 </model>

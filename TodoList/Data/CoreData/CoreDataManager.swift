@@ -14,8 +14,8 @@ class CoreDataManager: DBManager {
     
     private var context = CoreDataStack.shared.persistentContainer.viewContext
     
-    private func getTask(by id: UUID) -> Task? {
-        let request = Task.fetchRequest()
+    private func getTask(by id: UUID) -> TodoTask? {
+        let request = TodoTask.fetchRequest()
         
         request.predicate = NSPredicate(format: "id = \"\(id)\"")
         
@@ -37,7 +37,7 @@ class CoreDataManager: DBManager {
     }
     
     func createTask(newTask: CreateTaskEntity) -> TaskEntity? {
-        let task = Task(context: context)
+        let task = TodoTask(context: context)
         task.content = newTask.content
         task.dueDate = newTask.dueDate
         task.isCompleted = false
@@ -100,7 +100,7 @@ class CoreDataManager: DBManager {
     
     func getTasks() -> [TaskEntity]? {
         do {
-            let tasks = try context.fetch(Task.fetchRequest())
+            let tasks = try context.fetch(TodoTask.fetchRequest())
             var taskEntities: [TaskEntity] = []
             
             for task in tasks {
@@ -128,7 +128,7 @@ class CoreDataManager: DBManager {
             return nil
         }
         
-        let subtask = Subtask(context: context)
+        let subtask = TodoSubtask(context: context)
         subtask.content = newSubtask.content
         subtask.isCompleted = false
         subtask.parentTask = parentTask
@@ -147,8 +147,8 @@ class CoreDataManager: DBManager {
         return SubtaskEntity(from: subtask)
     }
     
-    private func getSubtask(by id: UUID) -> Subtask? {
-        let request = Subtask.fetchRequest()
+    private func getSubtask(by id: UUID) -> TodoSubtask? {
+        let request = TodoSubtask.fetchRequest()
         
         request.predicate = NSPredicate(format: "id = \"\(id)\"")
         
@@ -211,7 +211,7 @@ class CoreDataManager: DBManager {
     }
     
     func getSubtasks(for taskId: UUID) -> [SubtaskEntity]? {
-        let request = Subtask.fetchRequest()
+        let request = TodoSubtask.fetchRequest()
         
         request.predicate = NSPredicate(format: "parentTask.id = \"\(taskId)\"")
         
