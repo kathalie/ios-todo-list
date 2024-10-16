@@ -13,6 +13,7 @@ class TasksViewController: UITableViewController, CreateTaskDelegate {
         static let cellReuseIdentifier = "task_cell"
         static let goToSubtasks = "go_to_subtasks"
         static let goToCreateTask = "go_to_create_task"
+        static let goToSettings = "go_to_settings"
     }
     
     var taskEntities: [TaskEntity] = []
