@@ -35,7 +35,7 @@ final class TaskTableViewCell: UITableViewCell {
     private func setupDueDateLabel(dueDate: Date) {
         dueDateLabel.text = dueDateFormat(of: dueDate)
         
-        let deadlineMissed = dueDate > Date()
+        let deadlineMissed = dueDate < Date()
         dueDateLabel.textColor = deadlineMissed ? UIColor(named: "DeadlineMissedColor") : UIColor(named: "DeadlineActiveColor")
     }
     
