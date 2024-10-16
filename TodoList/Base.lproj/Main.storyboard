@@ -55,14 +55,14 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="task_cell" id="kCS-jP-WCt" customClass="TaskTableViewCell" customModule="TodoList" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="150" width="393" height="62.666667938232422"/>
+                                <rect key="frame" x="0.0" y="150" width="393" height="67.666664123535156"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kCS-jP-WCt" id="e9Q-iX-oQs">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="62.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="67.666664123535156"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ocp-CT-Dxf">
-                                            <rect key="frame" x="16" y="19" width="25" height="25"/>
+                                            <rect key="frame" x="16" y="21.333333333333329" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="Atd-w9-ZZk"/>
                                                 <constraint firstAttribute="height" constant="25" id="pbu-G2-fTj"/>
@@ -72,19 +72,16 @@
                                             <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4pZ-dK-1ln">
-                                            <rect key="frame" x="49" y="0.0" width="328" height="62.666666666666664"/>
+                                            <rect key="frame" x="49" y="0.0" width="328" height="67.666666666666671"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CD-Py-mfz">
-                                                    <rect key="frame" x="0.0" y="7.9999999999999982" width="328" height="21.333333333333329"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21.329999999999998" id="TRg-NI-ByU"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4CD-Py-mfz">
+                                                    <rect key="frame" x="0.0" y="8.0000000000000018" width="328" height="26.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9mr-4m-iph">
-                                                    <rect key="frame" x="0.0" y="33.333333333333336" width="328" height="21.333333333333336"/>
+                                                    <rect key="frame" x="0.0" y="38.666666666666664" width="328" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="zwp-gP-wO5"/>
                                                     </constraints>
@@ -212,7 +209,7 @@
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3WW-7Y-r8R">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3WW-7Y-r8R">
                                             <rect key="frame" x="86" y="11.000000000000002" width="271" height="20.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
