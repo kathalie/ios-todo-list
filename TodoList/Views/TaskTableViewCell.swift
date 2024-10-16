@@ -28,20 +28,34 @@ final class TaskTableViewCell: UITableViewCell {
         return dateFormatter.string(from: date)
     }
     
-    func config(taskEntity: TaskEntity, delegate: TaskEditorDelegate) {
-        self.taskEntity = taskEntity
-        self.delegate = delegate
+    private func setupTaskLabel(text: String) {
+        taskLabel.text = text
+    }
+    
+    private func setupDueDateLabel(dueDate: Date) {
+        dueDateLabel.text = dueDateFormat(of: dueDate)
         
-        taskLabel.text = taskEntity.content
-        dueDateLabel.text = dueDateFormat(of: taskEntity.dueDate)
-        
+        let deadlineMissed = dueDate > Date()
+        dueDateLabel.textColor = deadlineMissed ? UIColor(named: "DeadlineMissedColor") : UIColor(named: "DeadlineActiveColor")
+    }
+    
+    private func setupCompletionButton(as isCompleted: Bool) {
         let tapRecogniser = UITapGestureRecognizer(
             target: self,
             action: #selector(toggleTaskCompletion)
         )
         
-        setCompletionButton(to: taskEntity.isCompleted)
+        setCompletionButton(to: isCompleted)
         taskCompletionButton.addGestureRecognizer(tapRecogniser)
+    }
+    
+    func config(taskEntity: TaskEntity, delegate: TaskEditorDelegate) {
+        self.taskEntity = taskEntity
+        self.delegate = delegate
+        
+        setupTaskLabel(text: taskEntity.content)
+        setupDueDateLabel(dueDate: taskEntity.dueDate)
+        setupCompletionButton(as: taskEntity.isCompleted)
     }
     
     @objc
