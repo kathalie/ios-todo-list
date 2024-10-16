@@ -17,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="H4t-o0-32P">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="45"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boH-aG-vwW">
-                                    <rect key="frame" x="328" y="0.0" width="45" height="45"/>
+                                    <rect key="frame" x="328" y="27.666666666666671" width="45" height="45"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="45" id="FXo-Zu-9Kz"/>
                                         <constraint firstAttribute="height" constant="45" id="i4e-CZ-DEI"/>
@@ -34,9 +34,9 @@
                                     </connections>
                                 </button>
                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IRG-eb-0Tq">
-                                    <rect key="frame" x="8" y="-28" width="320" height="101"/>
+                                    <rect key="frame" x="8" y="15" width="320" height="70"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="100" id="CLg-NV-dZ6"/>
+                                        <constraint firstAttribute="height" constant="70" id="CLg-NV-dZ6"/>
                                     </constraints>
                                     <connections>
                                         <outlet property="dataSource" destination="ygK-7o-Orr" id="fe4-nc-D13"/>
@@ -55,7 +55,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="task_cell" id="kCS-jP-WCt" customClass="TaskTableViewCell" customModule="TodoList" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="95" width="393" height="62.666667938232422"/>
+                                <rect key="frame" x="0.0" y="150" width="393" height="62.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kCS-jP-WCt" id="e9Q-iX-oQs">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="62.666667938232422"/>

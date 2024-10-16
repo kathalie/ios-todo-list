@@ -23,7 +23,7 @@ final class TaskTableViewCell: UITableViewCell {
     
     private func dueDateFormat(of date: Date) -> String{
         let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yy HH:mm:ss")
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yy HH:mm")
         
         return dateFormatter.string(from: date)
     }
