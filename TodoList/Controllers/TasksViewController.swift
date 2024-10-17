@@ -13,6 +13,7 @@ class TasksViewController: UITableViewController {
         static let cellReuseIdentifier = "task_cell"
         static let goToSubtasks = "go_to_subtasks"
         static let goToCreateTask = "go_to_create_task"
+        static let goToEditTask = "go_to_edit_task"
         static let goToSettings = "go_to_settings"
     }
     
@@ -124,8 +125,16 @@ class TasksViewController: UITableViewController {
                 delegate: self
             )
         case Const.goToCreateTask:
-            let createTaskVC = segue.destination as! CreateTaskViewController
+            let createTaskVC = segue.destination as! TaskFormViewController
+            
+            createTaskVC.configForCreating()
             createTaskVC.delegate = self
+        case Const.goToEditTask:
+            let editTaskVC = segue.destination as! TaskFormViewController
+            let taskToEdit = sender as! TaskEntity
+            
+            editTaskVC.configForEditing(taskEntity: taskToEdit)
+            editTaskVC.delegate = self
         case Const.goToSettings:
             let settingsVC = segue.destination as! SettingsTableViewController
             settingsVC.delegate = self
@@ -135,7 +144,23 @@ class TasksViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let taskToRemove = taskEntities[indexPath.row]
+            
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, completion) in
+            guard let self else {return}
+            
+            let taskToEdit = self.taskEntities[indexPath.row]
+            
+            self.performSegue(withIdentifier: Const.goToEditTask, sender: taskToEdit)
+        }
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completion) in
+            guard let self else {return}
+            
+            let taskToRemove = self.taskEntities[indexPath.row]
             
             let deletedSuccessfully = dbManager.deleteTask(id: taskToRemove.id)
             
@@ -148,6 +173,8 @@ class TasksViewController: UITableViewController {
             taskEntities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
 }
 
@@ -173,11 +200,27 @@ extension TasksViewController: SettingsTableViewControllerDelegate {
     }
 }
 
-extension TasksViewController: CreateTaskDelegate {
+extension TasksViewController: TaskFormDelegate {
+    func editTask(as taskEntity: TaskEntity) {
+        let successfullyEdited = dbManager.editTask(task: taskEntity)
+        
+        if !successfullyEdited {
+            self.showErrorAlert(title: "Something went wrong.", message: "Failed to edit a task.")
+        }
+        
+        loadTasks()
+    }
+    
     func createTask(content: String, dueDate: Date) {
         let newTask = CreateTaskEntity(content: content, dueDate: dueDate)
         
-        _ = dbManager.createTask(newTask: newTask)
+        let createdTask = dbManager.createTask(newTask: newTask)
+        
+        guard let createdTask else {
+            self.showErrorAlert(title: "Something went wrong.", message: "Failed to create a task.")
+            
+            return
+        }
         
         Task {
             await localNotificationService.sendNotification(

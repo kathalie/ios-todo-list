@@ -11,10 +11,11 @@ protocol DBManagerDelegate {
     func getDBManager() -> DBManager
 }
 
-class SubtasksViewController: UITableViewController, CreateSubtaskDelegate {
+class SubtasksViewController: UITableViewController {
     struct Const {
         static let cellReuseIdentifier = "subtask_cell"
         static let goToCreateSubtask = "go_to_create_subtask"
+        static let goToEditSubtask = "go_to_edit_subtask"
     }
     
     var taskEntity: TaskEntity?
@@ -53,20 +54,6 @@ class SubtasksViewController: UITableViewController, CreateSubtaskDelegate {
         self.delegate = delegate
     }
     
-    func createSubtask(content subtaskContent: String) {
-        guard let taskEntity else {
-            showErrorAlert(title: "Somthing went wrong", message: "Failed to create a subtask")
-            
-            return
-        }
-        
-        let newSubtask = CreateSubtaskEntity(content: subtaskContent, parentTaskId: taskEntity.id)
-        
-        _ = delegate?.getDBManager().createSubtask(newSubtask: newSubtask)
-        
-        loadSubtasks()
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         subtaskEntities.count
     }
@@ -84,9 +71,19 @@ class SubtasksViewController: UITableViewController, CreateSubtaskDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, completion) in
+            guard let self else {return}
+            
+            let subtaskToEdit = self.subtaskEntities[indexPath.row]
+            
+            self.performSegue(withIdentifier: Const.goToEditSubtask, sender: subtaskToEdit)
+        }
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, view, completion) in
+            guard let self else {return}
+            
             let subtaskToRemove = subtaskEntities[indexPath.row]
             
             guard let delegate else {
@@ -106,13 +103,23 @@ class SubtasksViewController: UITableViewController, CreateSubtaskDelegate {
             subtaskEntities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case Const.goToCreateSubtask:
-            let createSubtaskVC = segue.destination as! CreateSubtaskViewController
+            let createSubtaskVC = segue.destination as! SubtaskFormViewController
+            
+            createSubtaskVC.configForCreating()
             createSubtaskVC.delegate = self
+        case Const.goToEditSubtask:
+            let editSubtaskVC = segue.destination as! SubtaskFormViewController
+            let subtaskToEdit = sender as! SubtaskEntity
+            
+            editSubtaskVC.configForEditing(subtaskEntity: subtaskToEdit)
+            editSubtaskVC.delegate = self
         default: break
         }
     }
@@ -129,5 +136,38 @@ extension SubtasksViewController: SubtaskEditorDelegate {
         loadSubtasks()
         
         return editedSuccessfully
+    }
+}
+
+extension SubtasksViewController: SubtaskFormDelegate {
+    func editSubtask(as subtaskEntity: SubtaskEntity) {
+        let successfullyEdited = delegate?.getDBManager().editSubtask(subtask: subtaskEntity) ?? false
+        
+        if !successfullyEdited {
+            self.showErrorAlert(title: "Something went wrong.", message: "Failed to edit a subtask.")
+        }
+        
+        loadSubtasks()
+    }
+    
+    func createSubtask(content subtaskContent: String) {
+        guard let taskEntity else {
+            showErrorAlert(title: "Something went wrong.", message: "Failed to create a subtask.")
+            print("Task entity to create a subtask does not exist")
+            
+            return
+        }
+        
+        let newSubtask = CreateSubtaskEntity(content: subtaskContent, parentTaskId: taskEntity.id)
+        
+        let createdSubtask = delegate?.getDBManager().createSubtask(newSubtask: newSubtask)
+        
+        guard let createdSubtask else {
+            self.showErrorAlert(title: "Something went wrong.", message: "Failed to create a subtask.")
+            
+            return
+        }
+        
+        loadSubtasks()
     }
 }

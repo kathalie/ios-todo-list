@@ -122,6 +122,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="WXr-cY-qC6" kind="show" identifier="go_to_subtasks" id="N93-jz-H0w"/>
+                        <segue destination="PTe-vx-bqp" kind="show" identifier="go_to_edit_task" id="s9g-Xi-arN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxl-T6-TY0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -158,21 +159,8 @@
                             <rect key="frame" x="0.0" y="0.0" width="393" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4r-hq-Ecu">
-                                    <rect key="frame" x="332" y="0.0" width="45" height="45"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="45" id="h9u-qM-YY8"/>
-                                        <constraint firstAttribute="width" constant="45" id="zg6-Nl-ghP"/>
-                                    </constraints>
-                                    <color key="tintColor" systemColor="systemPinkColor"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system"/>
-                                    <connections>
-                                        <segue destination="D1g-9C-rFz" kind="show" identifier="go_to_create_subtask" id="u2s-A4-ea9"/>
-                                    </connections>
-                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoO-Sz-fkE">
-                                    <rect key="frame" x="16" y="10.666666666666664" width="300" height="24"/>
+                                    <rect key="frame" x="16" y="10.666666666666664" width="48" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -180,9 +168,6 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="a4r-hq-Ecu" firstAttribute="leading" secondItem="FoO-Sz-fkE" secondAttribute="trailing" constant="16" id="Ay5-sg-RJv"/>
-                                <constraint firstItem="a4r-hq-Ecu" firstAttribute="centerY" secondItem="7gT-hN-bCV" secondAttribute="centerY" id="Fk9-I5-AOh"/>
-                                <constraint firstAttribute="trailing" secondItem="a4r-hq-Ecu" secondAttribute="trailing" constant="16" id="Td8-yx-U9F"/>
                                 <constraint firstItem="FoO-Sz-fkE" firstAttribute="centerY" secondItem="7gT-hN-bCV" secondAttribute="centerY" id="hKz-6O-eUI"/>
                                 <constraint firstItem="FoO-Sz-fkE" firstAttribute="leading" secondItem="7gT-hN-bCV" secondAttribute="leading" constant="16" id="udI-0l-Pmb"/>
                             </constraints>
@@ -232,9 +217,27 @@
                             <outlet property="delegate" destination="WXr-cY-qC6" id="8tK-vB-lG1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Subtasks" id="Con-qd-9BP"/>
+                    <navigationItem key="navigationItem" title="Subtasks" id="Con-qd-9BP">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="fZI-eY-fJk">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="a4r-hq-Ecu">
+                                <rect key="frame" x="332" y="0.0" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="h9u-qM-YY8"/>
+                                    <constraint firstAttribute="width" constant="45" id="zg6-Nl-ghP"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system"/>
+                                <connections>
+                                    <segue destination="D1g-9C-rFz" kind="show" identifier="go_to_create_subtask" id="u2s-A4-ea9"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="taskLabel" destination="FoO-Sz-fkE" id="J6w-pB-cDA"/>
+                        <segue destination="D1g-9C-rFz" kind="show" identifier="go_to_edit_subtask" id="5Mx-ba-KNf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzp-9G-tnw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -341,7 +344,7 @@
         <!--New Task-->
         <scene sceneID="5wL-Zf-MnZ">
             <objects>
-                <viewController id="PTe-vx-bqp" customClass="CreateTaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PTe-vx-bqp" customClass="TaskFormViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4gJ-hr-IBJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -354,7 +357,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="taskContentChanged:" destination="PTe-vx-bqp" eventType="editingDidEnd" id="09Q-GM-cdl"/>
                                     <outlet property="delegate" destination="PTe-vx-bqp" id="60P-sW-9Cj"/>
                                 </connections>
                             </textField>
@@ -368,7 +370,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                 <connections>
-                                    <action selector="createTask:" destination="PTe-vx-bqp" eventType="touchUpInside" id="4df-rW-2fe"/>
+                                    <action selector="saveChanges:" destination="PTe-vx-bqp" eventType="touchUpInside" id="4df-rW-2fe"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gaX-fc-Nar">
@@ -382,9 +384,6 @@
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="sTS-zl-zc6">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="50"/>
-                                        <connections>
-                                            <action selector="dueDateChanged:" destination="PTe-vx-bqp" eventType="valueChanged" id="z8R-c5-c9r"/>
-                                        </connections>
                                     </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -416,6 +415,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Task" id="hmh-M4-czh"/>
                     <connections>
+                        <outlet property="dueDatePicker" destination="sTS-zl-zc6" id="6Cc-lE-7Bx"/>
+                        <outlet property="navBar" destination="hmh-M4-czh" id="a3Q-Yh-lWP"/>
                         <outlet property="taskContentTextField" destination="LlD-db-Ghd" id="xwM-rg-uYk"/>
                     </connections>
                 </viewController>
@@ -426,7 +427,7 @@
         <!--New Subtask-->
         <scene sceneID="cwG-cV-NKF">
             <objects>
-                <viewController id="D1g-9C-rFz" customClass="CreateSubtaskViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="D1g-9C-rFz" customClass="SubtaskFormViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TUl-Xo-upn">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,7 +453,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                 <connections>
-                                    <action selector="createSubtask:" destination="D1g-9C-rFz" eventType="touchUpInside" id="1ii-nl-UQg"/>
+                                    <action selector="saveChanges:" destination="D1g-9C-rFz" eventType="touchUpInside" id="1ii-nl-UQg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -468,6 +469,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Subtask" id="jbO-5P-YqO"/>
                     <connections>
+                        <outlet property="navBar" destination="jbO-5P-YqO" id="1D8-qa-bzr"/>
                         <outlet property="subtaskContentTextField" destination="NGY-ej-Za8" id="Sd6-0x-Nyc"/>
                     </connections>
                 </viewController>
@@ -476,6 +478,10 @@
             <point key="canvasLocation" x="3047" y="-785"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="5Mx-ba-KNf"/>
+        <segue reference="s9g-Xi-arN"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>

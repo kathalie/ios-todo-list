@@ -10,8 +10,8 @@
 		8C6651802CBEEDE500E12710 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8C66517F2CBEEDE500E12710 /* RealmSwift */; };
 		8C6651842CBEEFE100E12710 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651832CBEEFE100E12710 /* RealmManager.swift */; };
 		8C6651862CBEEFEC00E12710 /* RealmModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651852CBEEFEC00E12710 /* RealmModels.swift */; };
-		8C6651882CBF034F00E12710 /* CreateTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651872CBF034F00E12710 /* CreateTaskViewController.swift */; };
-		8C6651C52CBFFBF800E12710 /* CreateSubtaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651C42CBFFBF800E12710 /* CreateSubtaskViewController.swift */; };
+		8C6651882CBF034F00E12710 /* TaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651872CBF034F00E12710 /* TaskFormViewController.swift */; };
+		8C6651C52CBFFBF800E12710 /* SubtaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651C42CBFFBF800E12710 /* SubtaskFormViewController.swift */; };
 		8C6651C62CC008DC00E12710 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 8C66517F2CBEEDE500E12710 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8C6651CA2CC01EED00E12710 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651C92CC01EED00E12710 /* LocalNotificationsService.swift */; };
 		8C6651D72CC024D500E12710 /* TodoSubtask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651D32CC024D500E12710 /* TodoSubtask+CoreDataClass.swift */; };
@@ -54,8 +54,8 @@
 /* Begin PBXFileReference section */
 		8C6651832CBEEFE100E12710 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		8C6651852CBEEFEC00E12710 /* RealmModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModels.swift; sourceTree = "<group>"; };
-		8C6651872CBF034F00E12710 /* CreateTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewController.swift; sourceTree = "<group>"; };
-		8C6651C42CBFFBF800E12710 /* CreateSubtaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubtaskViewController.swift; sourceTree = "<group>"; };
+		8C6651872CBF034F00E12710 /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
+		8C6651C42CBFFBF800E12710 /* SubtaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskFormViewController.swift; sourceTree = "<group>"; };
 		8C6651C92CC01EED00E12710 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		8C6651D32CC024D500E12710 /* TodoSubtask+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoSubtask+CoreDataClass.swift"; sourceTree = "<group>"; };
 		8C6651D42CC024D500E12710 /* TodoSubtask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoSubtask+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -124,11 +124,11 @@
 		8C88C3982CB59FE700A1D174 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8CBD273F2CB48FE100E413E3 /* TasksViewController.swift */,
 				8C88C39C2CB5AED500A1D174 /* ViewController+Alerts.swift */,
+				8CBD273F2CB48FE100E413E3 /* TasksViewController.swift */,
 				8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */,
-				8C6651872CBF034F00E12710 /* CreateTaskViewController.swift */,
-				8C6651C42CBFFBF800E12710 /* CreateSubtaskViewController.swift */,
+				8C6651872CBF034F00E12710 /* TaskFormViewController.swift */,
+				8C6651C42CBFFBF800E12710 /* SubtaskFormViewController.swift */,
 				8C6651DB2CC0554E00E12710 /* SettingsTableViewController.swift */,
 			);
 			path = Controllers;
@@ -300,9 +300,9 @@
 				8C6651D92CC024D500E12710 /* TodoTask+CoreDataClass.swift in Sources */,
 				8CBD27462CB48FE100E413E3 /* TodoList.xcdatamodeld in Sources */,
 				8CA7C3892CBC69AE006F32B8 /* CoreDataManager.swift in Sources */,
-				8C6651C52CBFFBF800E12710 /* CreateSubtaskViewController.swift in Sources */,
+				8C6651C52CBFFBF800E12710 /* SubtaskFormViewController.swift in Sources */,
 				8C88C3972CB59EF000A1D174 /* TaskTableViewCell.swift in Sources */,
-				8C6651882CBF034F00E12710 /* CreateTaskViewController.swift in Sources */,
+				8C6651882CBF034F00E12710 /* TaskFormViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
