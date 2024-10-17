@@ -19,19 +19,33 @@ final class SubtaskTableViewCell: UITableViewCell {
     var subtaskEntity: SubtaskEntity?
     var delegate: SubtaskEditorDelegate?
     
-    func config(with subtaskEntity: SubtaskEntity, delegate: SubtaskEditorDelegate) {
-        self.subtaskEntity = subtaskEntity
-        self.delegate = delegate
+    private func setupSubtaskLabel(text: String, isCompleted: Bool) {
+        let attributedText = NSAttributedString(
+            string: text,
+            attributes: isCompleted ?
+                [.strikethroughStyle: NSUnderlineStyle.single.rawValue] :
+                [:]
+        )
         
-        subtaskLabel.text = subtaskEntity.content
-        
+        subtaskLabel.attributedText = attributedText
+    }
+    
+    private func setupCompletionButton(as isCompleted: Bool) {
         let tapRecogniser = UITapGestureRecognizer(
             target: self,
             action: #selector(toggleSubtaskCompletion)
         )
         
-        setCompletionButton(to: subtaskEntity.isCompleted)
+        setCompletionButton(to: isCompleted)
         subtaskCompletionButton.addGestureRecognizer(tapRecogniser)
+    }
+    
+    func config(with subtaskEntity: SubtaskEntity, delegate: SubtaskEditorDelegate) {
+        self.subtaskEntity = subtaskEntity
+        self.delegate = delegate
+        
+        setupSubtaskLabel(text: subtaskEntity.content, isCompleted: subtaskEntity.isCompleted)
+        setupCompletionButton(as: subtaskEntity.isCompleted)
     }
     
     @objc

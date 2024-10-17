@@ -28,8 +28,15 @@ final class TaskTableViewCell: UITableViewCell {
         return dateFormatter.string(from: date)
     }
     
-    private func setupTaskLabel(text: String) {
-        taskLabel.text = text
+    private func setupTaskLabel(text: String, isCompleted: Bool) {
+        let attributedText = NSAttributedString(
+            string: text,
+            attributes: isCompleted ? 
+                [.strikethroughStyle: NSUnderlineStyle.single.rawValue] :
+                [:]
+        )
+        
+        taskLabel.attributedText = attributedText
     }
     
     private func setupDueDateLabel(dueDate: Date) {
@@ -53,7 +60,7 @@ final class TaskTableViewCell: UITableViewCell {
         self.taskEntity = taskEntity
         self.delegate = delegate
         
-        setupTaskLabel(text: taskEntity.content)
+        setupTaskLabel(text: taskEntity.content, isCompleted: taskEntity.isCompleted)
         setupDueDateLabel(dueDate: taskEntity.dueDate)
         setupCompletionButton(as: taskEntity.isCompleted)
     }
