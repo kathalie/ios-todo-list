@@ -24,8 +24,6 @@ class SubtaskFormViewController: UIViewController {
     
     private var subtaskContent: String = ""
     
-    @IBOutlet private weak var navBar: UINavigationItem!
-    
     @IBOutlet private weak var subtaskContentTextField: UITextField!
     
     @IBAction private func subtaskContentChanged(_ sender: UITextField) {
@@ -59,9 +57,9 @@ class SubtaskFormViewController: UIViewController {
         
         switch mode {
         case .creating:
-            navBar.title = "New Subtask"
+            self.title = "New Subtask"
         case .editing(_):
-            navBar.title = "Edit Subtask"
+            self.title = "Edit Subtask"
         }
     }
     

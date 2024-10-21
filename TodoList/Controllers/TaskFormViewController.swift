@@ -27,9 +27,7 @@ class TaskFormViewController: UIViewController {
     @IBOutlet private weak var taskContentTextField: UITextField!
     
     @IBOutlet private weak var dueDatePicker: UIDatePicker!
-    
-    @IBOutlet private weak var navBar: UINavigationItem!
-    
+        
     @IBAction private func saveChanges(_ sender: Any) {
         let taskContent = taskContentTextField.text ?? ""
         let dueDate = dueDatePicker.date
@@ -60,9 +58,9 @@ class TaskFormViewController: UIViewController {
         
         switch mode {
         case .creating:
-            navBar.title = "New Task"
+            self.title = "New Task"
         case .editing(_):
-            navBar.title = "Edit Task"
+            self.title = "Edit Task"
         }
     }
     
