@@ -19,29 +19,6 @@ class TasksViewController: UITableViewController {
     
     let localNotificationService = LocalNotificationsService.shared
     
-    let dbManagers: [DBManagers: DBManager] = [
-        .coreData: CoreDataManager.shared,
-        .realm: RealmManager.shared
-    ]
-    
-    var dbManager: DBManager {
-        let dbManagerRaw = UserDefaults.standard.string(forKey: UserDefaultKeys.dbManager.rawValue) ?? DBManagers.coreData.rawValue
-        
-        let dbManagerCase = DBManagers(rawValue: dbManagerRaw) ?? DBManagers.coreData
-        
-        print("DB Manager: \(dbManagerRaw)")
-        
-        return dbManagers[dbManagerCase]!
-    }
-    
-    var localNotificationsAllowed: Bool {
-        let allowed = UserDefaults.standard.bool(forKey: UserDefaultKeys.localNotificationsAllowed.rawValue)
-        
-        print("Local notifications allowed: \(allowed)")
-        
-        return allowed
-    }
-    
     var taskEntities: [TaskEntity] = []
 //    var laSuccess: Bool = false {
 //        didSet {
@@ -79,7 +56,7 @@ class TasksViewController: UITableViewController {
     }
     
     func loadTasks() {
-        guard let taskEntities = dbManager.getTasks()
+        guard let taskEntities = SettingsProvider.currentDbManager.getTasks()
         else {
             print("Failed to load tasks")
             
@@ -121,8 +98,7 @@ class TasksViewController: UITableViewController {
             
             subtasksVC.config(
                 with: taskEntity.subtasks,
-                taskEntity: taskEntity,
-                delegate: self
+                taskEntity: taskEntity
             )
         case Const.goToCreateTask:
             let createTaskVC = segue.destination as! TaskFormViewController
@@ -162,7 +138,7 @@ class TasksViewController: UITableViewController {
             
             let taskToRemove = self.taskEntities[indexPath.row]
             
-            let deletedSuccessfully = dbManager.deleteTask(id: taskToRemove.id)
+            let deletedSuccessfully = SettingsProvider.currentDbManager.deleteTask(id: taskToRemove.id)
             
             if !deletedSuccessfully {
                 self.showErrorAlert(title: "Something went wrong", message: "Failed to delete a task")
@@ -172,6 +148,9 @@ class TasksViewController: UITableViewController {
             
             taskEntities.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            // Remove local notification
+            removeLocalNotification(for: taskToRemove)
         }
         
         return UISwipeActionsConfiguration(actions: [deleteAction, editAction])
@@ -180,17 +159,11 @@ class TasksViewController: UITableViewController {
 
 extension TasksViewController: TaskEditorDelegate {
     func saveEditedTask(_ newTask: TaskEntity) -> Bool {
-        let editedSuccessfully = dbManager.editTask(task: newTask)
+        let editedSuccessfully = SettingsProvider.currentDbManager.editTask(task: newTask)
         
         loadTasks()
         
         return editedSuccessfully
-    }
-}
-
-extension TasksViewController: DBManagerDelegate {
-    func getDBManager() -> DBManager {
-        return dbManager
     }
 }
 
@@ -202,11 +175,15 @@ extension TasksViewController: SettingsTableViewControllerDelegate {
 
 extension TasksViewController: TaskFormDelegate {
     func editTask(as taskEntity: TaskEntity) {
-        let successfullyEdited = dbManager.editTask(task: taskEntity)
+        let successfullyEdited = SettingsProvider.currentDbManager.editTask(task: taskEntity)
         
         if !successfullyEdited {
             self.showErrorAlert(title: "Something went wrong.", message: "Failed to edit a task.")
         }
+        
+        // Reschedule local notidication
+        removeLocalNotification(for: taskEntity)
+        scheduleLocalNotification(for: taskEntity)
         
         loadTasks()
     }
@@ -214,7 +191,7 @@ extension TasksViewController: TaskFormDelegate {
     func createTask(content: String, dueDate: Date) {
         let newTask = CreateTaskEntity(content: content, dueDate: dueDate)
         
-        let createdTask = dbManager.createTask(newTask: newTask)
+        let createdTask = SettingsProvider.currentDbManager.createTask(newTask: newTask)
         
         guard let createdTask else {
             self.showErrorAlert(title: "Something went wrong.", message: "Failed to create a task.")
@@ -222,14 +199,28 @@ extension TasksViewController: TaskFormDelegate {
             return
         }
         
-        Task {
-            await localNotificationService.sendNotification(
-                on: dueDate,
-                title: "The following task is due now",
-                body: content
-            )
-        }
+        // Schedule local notification
+        scheduleLocalNotification(for: createdTask)
         
         loadTasks()
+    }
+    
+    private func scheduleLocalNotification(for task: TaskEntity) {
+        guard SettingsProvider.localNotificationsAllowed else {
+            return
+        }
+        
+        Task {
+            await localNotificationService.scheduleNotification(
+                task.id,
+                on: task.dueDate,
+                title: "The following task is due now",
+                body: task.content
+            )
+        }
+    }
+    
+    private func removeLocalNotification(for task: TaskEntity) {
+        LocalNotificationsService.shared.removeNotification(task.id)
     }
 }

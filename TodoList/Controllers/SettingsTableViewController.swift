@@ -7,15 +7,6 @@
 
 import UIKit
 
-enum UserDefaultKeys: String {
-    case dbManager, localNotificationsAllowed
-}
-
-enum DBManagers: String, CaseIterable {
-    case coreData = "CoreData"
-    case realm = "Realm"
-}
-
 protocol SettingsTableViewControllerDelegate {
     func update()
 }
@@ -29,28 +20,38 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var allowLocalNotificationsSwitch: UISwitch!
     
     @IBAction func allowLocalNotificationsChanged(_ sender: UISwitch) {
-        UserDefaults.standard.set(sender.isOn, forKey: UserDefaultKeys.localNotificationsAllowed.rawValue)
-                
+        Task {
+            if sender.isOn {
+                await SettingsProvider.allowLocalNotifications()
+            } else {
+                await SettingsProvider.denyLocalNotifications()
+            }
+        }
+        
         delegate?.update()
     }
     
-    override func viewDidLoad() {
-        setupDbPicker()
-        setupLocalNotificationsSwitch()
-    }
-    
     private func setupDbPicker() {
-        let dbManagerRaw = UserDefaults.standard.string(forKey: UserDefaultKeys.dbManager.rawValue) ?? DBManagers.coreData.rawValue
-        let dbManagerCase = DBManagers(rawValue: dbManagerRaw) ?? DBManagers.coreData
+        let dbManagerRaw = SettingsProvider.currentDbManagerRaw
+        let dbManagerCase = DBManagers(rawValue: dbManagerRaw)!
         let row = DBManagers.allCases.firstIndex(of: dbManagerCase) ?? 0
         
         dbPicker.selectRow(row, inComponent: 0, animated: false)
     }
     
     private func setupLocalNotificationsSwitch() {
-        let allowed = UserDefaults.standard.bool(forKey: UserDefaultKeys.localNotificationsAllowed.rawValue)
-        
-        allowLocalNotificationsSwitch.setOn(allowed, animated: false)
+        Task { [weak self] in
+            let allowed = SettingsProvider.localNotificationsAllowed
+            
+            DispatchQueue.main.async {[weak self] in
+                self?.allowLocalNotificationsSwitch.setOn(allowed, animated: false)
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        setupDbPicker()
+        setupLocalNotificationsSwitch()
     }
 }
 
@@ -66,7 +67,7 @@ extension SettingsTableViewController: UIPickerViewDelegate, UIPickerViewDataSou
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let newDbManager = DBManagers.allCases[row]
         
-        UserDefaults.standard.set(newDbManager.rawValue, forKey: UserDefaultKeys.dbManager.rawValue)
+        SettingsProvider.updateDbManager(to: newDbManager)
         
         delegate?.update()
     }

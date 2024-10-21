@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol DBManagerDelegate {
-    func getDBManager() -> DBManager
-}
-
 class SubtasksViewController: UITableViewController {
     struct Const {
         static let cellReuseIdentifier = "subtask_cell"
@@ -20,7 +16,6 @@ class SubtasksViewController: UITableViewController {
     
     var taskEntity: TaskEntity?
     var subtaskEntities: [SubtaskEntity] = []
-    var delegate: DBManagerDelegate?
     
     @IBOutlet private weak var taskLabel: UILabel!
     
@@ -35,9 +30,8 @@ class SubtasksViewController: UITableViewController {
     }
     
     private func loadSubtasks() {
-        guard let delegate,
-              let taskId = taskEntity?.id,
-              let subtaskEntities = delegate.getDBManager().getSubtasks(for: taskId)
+        guard let taskId = taskEntity?.id,
+              let subtaskEntities = SettingsProvider.currentDbManager.getSubtasks(for: taskId)
         else {
             print("Failed to load subtasks")
             
@@ -48,10 +42,9 @@ class SubtasksViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func config(with subtaskEntities: [SubtaskEntity], taskEntity: TaskEntity, delegate: DBManagerDelegate) {
+    func config(with subtaskEntities: [SubtaskEntity], taskEntity: TaskEntity) {
         self.subtaskEntities = subtaskEntities
         self.taskEntity = taskEntity
-        self.delegate = delegate
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -86,13 +79,7 @@ class SubtasksViewController: UITableViewController {
             
             let subtaskToRemove = subtaskEntities[indexPath.row]
             
-            guard let delegate else {
-                self.showErrorAlert(title: "Something went wrong", message: "Failed to delete a subtask")
-                
-                return
-            }
-            
-            let deletedSuccessfully = delegate.getDBManager().deleteSubtask(id: subtaskToRemove.id)
+            let deletedSuccessfully = SettingsProvider.currentDbManager.deleteSubtask(id: subtaskToRemove.id)
             
             if !deletedSuccessfully {
                 self.showErrorAlert(title: "Something went wrong", message: "Failed to delete a subtask")
@@ -127,11 +114,7 @@ class SubtasksViewController: UITableViewController {
 
 extension SubtasksViewController: SubtaskEditorDelegate {
     func saveEditedSubtask(_ newSubtask: SubtaskEntity) -> Bool {
-        guard let delegate else {
-            return false
-        }
-        
-        let editedSuccessfully = delegate.getDBManager().editSubtask(subtask: newSubtask)
+        let editedSuccessfully = SettingsProvider.currentDbManager.editSubtask(subtask: newSubtask)
         
         loadSubtasks()
         
@@ -141,7 +124,7 @@ extension SubtasksViewController: SubtaskEditorDelegate {
 
 extension SubtasksViewController: SubtaskFormDelegate {
     func editSubtask(as subtaskEntity: SubtaskEntity) {
-        let successfullyEdited = delegate?.getDBManager().editSubtask(subtask: subtaskEntity) ?? false
+        let successfullyEdited = SettingsProvider.currentDbManager.editSubtask(subtask: subtaskEntity)
         
         if !successfullyEdited {
             self.showErrorAlert(title: "Something went wrong.", message: "Failed to edit a subtask.")
@@ -160,7 +143,7 @@ extension SubtasksViewController: SubtaskFormDelegate {
         
         let newSubtask = CreateSubtaskEntity(content: subtaskContent, parentTaskId: taskEntity.id)
         
-        let createdSubtask = delegate?.getDBManager().createSubtask(newSubtask: newSubtask)
+        let createdSubtask = SettingsProvider.currentDbManager.createSubtask(newSubtask: newSubtask)
         
         guard let createdSubtask else {
             self.showErrorAlert(title: "Something went wrong.", message: "Failed to create a subtask.")

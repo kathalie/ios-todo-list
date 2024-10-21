@@ -17,24 +17,28 @@ class LocalNotificationsService {
         UNUserNotificationCenter.current()
     }
     
-    func sendNotification(on date: Date, repeats: Bool = false, title: String, body: String) async {
+    func scheduleNotification(_ id: UUID, on date: Date, repeats: Bool = false, title: String, body: String) async {
         let content = UNMutableNotificationContent()
         content.title = title
         content.body = body
         
         let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-
-        let uuid = UUID().uuidString
         
-        let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
-        
+        let request = UNNotificationRequest(identifier: id.uuidString, content: content, trigger: trigger)
+                
         do {
             try await notificationCenter.add(request)
-            print("Local notification sent")
+            print("Local notification scheduled")
         } catch {
             print("Failed to send local notification: \(error.localizedDescription)")
         }
+    }
+    
+    func removeNotification(_ id: UUID) {
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: [id.uuidString])
+        
+        print("Notification removed")
     }
     
     func requestNotificationAuthorisation() async -> Bool{
@@ -48,5 +52,23 @@ class LocalNotificationsService {
         }
         
         return true
+    }
+    
+//    var notificationsAllowed: Bool? {
+//        get async {
+//            let authorisationStatus = await notificationCenter.notificationSettings().authorizationStatus
+//            
+//            if authorisationStatus == .notDetermined {
+//                return nil
+//            }
+//            
+//            return authorisationStatus == .authorized
+//        }
+//    }
+    
+    func cancelAllNotifications() {
+        print("Will remove all pending notifications")
+        
+        notificationCenter.removeAllPendingNotificationRequests()
     }
 }
