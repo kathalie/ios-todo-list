@@ -15,6 +15,7 @@ class TasksViewController: UITableViewController {
         static let goToCreateTask = "go_to_create_task"
         static let goToEditTask = "go_to_edit_task"
         static let goToSettings = "go_to_settings"
+        static let goToNotifications = "go_to_notifications"
     }
     
     let localNotificationService = LocalNotificationsService.shared
@@ -114,13 +115,9 @@ class TasksViewController: UITableViewController {
         case Const.goToSettings:
             let settingsVC = segue.destination as! SettingsTableViewController
             settingsVC.delegate = self
+//        case Const.goToNotifications:
+//            let notificationsVC = segue.destination as! NotificationsViewController
         default: break
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
         }
     }
     

@@ -107,10 +107,10 @@
                                     <color key="tintColor" systemColor="systemPinkColor"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="bell.badge" catalog="system"/>
+                                    <connections>
+                                        <segue destination="VLC-C5-3Og" kind="show" identifier="go_to_notifications" id="lTx-0k-6if"/>
+                                    </connections>
                                 </button>
-                                <connections>
-                                    <segue destination="VLC-C5-3Og" kind="show" id="bnf-zJ-T9L"/>
-                                </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="iPU-wV-ITy">
@@ -138,19 +138,56 @@
         <!--Notifications-->
         <scene sceneID="TWV-8j-E1V">
             <objects>
-                <tableViewController id="VLC-C5-3Og" sceneMemberID="viewController">
+                <tableViewController id="VLC-C5-3Og" customClass="NotificationsViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="J88-cT-HVL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MWI-cw-Qsz">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notification_cell" id="MWI-cw-Qsz" customClass="NotificationTableViewCell" customModule="TodoList" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MWI-cw-Qsz" id="yh6-ha-XVw">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UO-ge-qqZ">
+                                            <rect key="frame" x="16" y="41.333333333333336" width="361" height="19.333333333333336"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbQ-cW-kee">
+                                            <rect key="frame" x="16" y="68.666666666666671" width="361" height="19.333333333333329"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ew-is-fFG">
+                                            <rect key="frame" x="16" y="7.9999999999999982" width="361" height="27.333333333333329"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="PbQ-cW-kee" secondAttribute="trailing" constant="16" id="3wk-Ac-hm8"/>
+                                        <constraint firstAttribute="trailing" secondItem="4UO-ge-qqZ" secondAttribute="trailing" constant="16" id="6YV-Zx-ILu"/>
+                                        <constraint firstItem="8ew-is-fFG" firstAttribute="top" secondItem="yh6-ha-XVw" secondAttribute="top" constant="8" id="BhH-Ai-yFE"/>
+                                        <constraint firstItem="PbQ-cW-kee" firstAttribute="leading" secondItem="yh6-ha-XVw" secondAttribute="leading" constant="16" id="FNn-3f-FmO"/>
+                                        <constraint firstItem="8ew-is-fFG" firstAttribute="leading" secondItem="yh6-ha-XVw" secondAttribute="leading" constant="16" id="G50-Js-zdt"/>
+                                        <constraint firstItem="PbQ-cW-kee" firstAttribute="top" secondItem="4UO-ge-qqZ" secondAttribute="bottom" constant="8" id="IZF-1L-AJw"/>
+                                        <constraint firstItem="4UO-ge-qqZ" firstAttribute="leading" secondItem="yh6-ha-XVw" secondAttribute="leading" constant="16" id="OmD-Qq-hBs"/>
+                                        <constraint firstAttribute="trailing" secondItem="8ew-is-fFG" secondAttribute="trailing" constant="16" id="Pgn-KN-m2Q"/>
+                                        <constraint firstAttribute="bottom" secondItem="PbQ-cW-kee" secondAttribute="bottom" constant="8" id="szM-lG-w8b"/>
+                                        <constraint firstItem="4UO-ge-qqZ" firstAttribute="top" secondItem="8ew-is-fFG" secondAttribute="bottom" constant="6" id="yb1-07-hUa"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="acceptedLabel" destination="PbQ-cW-kee" id="ERB-jp-ys9"/>
+                                    <outlet property="dueDateLabel" destination="4UO-ge-qqZ" id="GpS-Gg-Vch"/>
+                                    <outlet property="taskContentLabel" destination="8ew-is-fFG" id="ZNd-KC-Sid"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -162,7 +199,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oN6-Uf-4xs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1433" y="589"/>
+            <point key="canvasLocation" x="1434" y="687"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xZ5-7g-y7d">

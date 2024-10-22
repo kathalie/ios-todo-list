@@ -20,14 +20,6 @@ final class TaskTableViewCell: UITableViewCell {
     var taskEntity: TaskEntity?
     var delegate: TaskEditorDelegate?
     
-    
-    private func dueDateFormat(of date: Date) -> String{
-        let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("dd.MM.yy HH:mm")
-        
-        return dateFormatter.string(from: date)
-    }
-    
     private func setupTaskLabel(text: String, isCompleted: Bool) {
         let attributedText = NSAttributedString(
             string: text,

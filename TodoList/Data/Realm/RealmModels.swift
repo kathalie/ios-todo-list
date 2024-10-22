@@ -53,3 +53,23 @@ class SubtaskRealmModel: Object {
         self.parentTask = parentTask
     }
 }
+
+class NotificationRealmModel: Object {
+    @Persisted(primaryKey: true) var id: UUID
+    @Persisted var content: String
+    @Persisted var dueDate: Date
+    @Persisted var isAccepted: Bool
+    
+    convenience init(
+        id: UUID = UUID(),
+        content: String,
+        dueDate: Date,
+        isAccepted: Bool
+    ) {
+        self.init()
+        self.id = id
+        self.content = content
+        self.dueDate = dueDate
+        self.isAccepted = isAccepted
+    }
+}
