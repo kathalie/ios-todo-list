@@ -26,6 +26,7 @@
 		8C794BB52CC7FB53005059AD /* RealmNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BB42CC7FB53005059AD /* RealmNotificationsService.swift */; };
 		8C794BB72CC7FD41005059AD /* NotificationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BB62CC7FD41005059AD /* NotificationEntity.swift */; };
 		8C794BB92CC8063D005059AD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BB82CC8063D005059AD /* Util.swift */; };
+		8C794BBB2CC814A2005059AD /* RemoteNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BBA2CC814A2005059AD /* RemoteNotificationsService.swift */; };
 		8C88C3942CB5834A00A1D174 /* SubtasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */; };
 		8C88C3972CB59EF000A1D174 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */; };
 		8C88C39B2CB5A00A00A1D174 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */; };
@@ -76,6 +77,7 @@
 		8C794BB42CC7FB53005059AD /* RealmNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmNotificationsService.swift; sourceTree = "<group>"; };
 		8C794BB62CC7FD41005059AD /* NotificationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationEntity.swift; sourceTree = "<group>"; };
 		8C794BB82CC8063D005059AD /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		8C794BBA2CC814A2005059AD /* RemoteNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationsService.swift; sourceTree = "<group>"; };
 		8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtasksViewController.swift; sourceTree = "<group>"; };
 		8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				8C6651C92CC01EED00E12710 /* LocalNotificationsService.swift */,
+				8C794BBA2CC814A2005059AD /* RemoteNotificationsService.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				8C6651862CBEEFEC00E12710 /* RealmModels.swift in Sources */,
 				8C794BB92CC8063D005059AD /* Util.swift in Sources */,
 				8CBD273C2CB48FE100E413E3 /* AppDelegate.swift in Sources */,
+				8C794BBB2CC814A2005059AD /* RemoteNotificationsService.swift in Sources */,
 				8C88C39D2CB5AED500A1D174 /* ViewController+Alerts.swift in Sources */,
 				8C6651842CBEEFE100E12710 /* RealmManager.swift in Sources */,
 				8CBD273E2CB48FE100E413E3 /* SceneDelegate.swift in Sources */,

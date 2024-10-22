@@ -12,6 +12,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UNUserNotificationCenter.current().delegate = self
+        RemoteNotificationsService.shared.registerNotificationCategories()
         
         Task {
             await LocalNotificationsService.shared.requestNotificationAuthorisation()
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) async -> UIBackgroundFetchResult {
         print(userInfo)
         
@@ -92,5 +93,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         print("userNotificationCenter willPresent")
         
         completionHandler([.badge, .banner, .list, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+        RemoteNotificationsService.shared.defineAction(for: response)
     }
 }
