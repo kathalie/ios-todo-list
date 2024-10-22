@@ -364,40 +364,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="notifications" id="maa-dk-GzN" userLabel="Notifications">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9Bb-vI-y7J">
-                                        <rect key="frame" x="20" y="187.66666603088379" width="353" height="42.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Bb-vI-y7J" id="cO0-Gp-EHQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="42.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send local notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH3-mT-uA7">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="260" height="20.666666666666671"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="odx-cZ-NY4">
-                                                    <rect key="frame" x="288" y="6" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="allowLocalNotificationsChanged:" destination="K2B-5O-XsV" eventType="valueChanged" id="mbt-8j-fDz"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="odx-cZ-NY4" firstAttribute="centerY" secondItem="cO0-Gp-EHQ" secondAttribute="centerY" id="Fa8-9X-FlV"/>
-                                                <constraint firstAttribute="trailing" secondItem="odx-cZ-NY4" secondAttribute="trailing" constant="16" id="REf-A2-tnd"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="SH3-mT-uA7" secondAttribute="bottom" id="WT0-mp-HQr"/>
-                                                <constraint firstItem="SH3-mT-uA7" firstAttribute="leading" secondItem="cO0-Gp-EHQ" secondAttribute="leadingMargin" id="exX-Wp-u3R"/>
-                                                <constraint firstItem="SH3-mT-uA7" firstAttribute="top" secondItem="cO0-Gp-EHQ" secondAttribute="topMargin" id="nK0-4m-Fp0"/>
-                                                <constraint firstItem="odx-cZ-NY4" firstAttribute="leading" secondItem="SH3-mT-uA7" secondAttribute="trailing" constant="8" id="oj5-lp-MCf"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="K2B-5O-XsV" id="dMT-q3-l8X"/>
@@ -406,7 +372,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="3RY-2A-ElA"/>
                     <connections>
-                        <outlet property="allowLocalNotificationsSwitch" destination="odx-cZ-NY4" id="cmz-ey-XD7"/>
                         <outlet property="dbPicker" destination="IRG-eb-0Tq" id="bdm-WW-weW"/>
                     </connections>
                 </tableViewController>
