@@ -87,18 +87,32 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDo" id="XW8-ou-zJz">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="ANa-Oy-IOD">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="aMo-Hm-REN">
-                                <rect key="frame" x="16" y="0.0" width="51" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="gearshape" catalog="system"/>
+                        <leftBarButtonItems>
+                            <barButtonItem style="plain" id="ANa-Oy-IOD">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="aMo-Hm-REN">
+                                    <rect key="frame" x="16" y="0.0" width="51" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" systemColor="systemPinkColor"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="gearshape" catalog="system"/>
+                                    <connections>
+                                        <segue destination="K2B-5O-XsV" kind="show" identifier="go_to_settings" id="941-LS-1d6"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="qTI-0q-EM4">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VPb-aQ-sxW">
+                                    <rect key="frame" x="75" y="5" width="87" height="34.333333333333336"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" systemColor="systemPinkColor"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="bell.badge" catalog="system"/>
+                                </button>
                                 <connections>
-                                    <segue destination="K2B-5O-XsV" kind="show" identifier="go_to_settings" id="941-LS-1d6"/>
+                                    <segue destination="VLC-C5-3Og" kind="show" id="bnf-zJ-T9L"/>
                                 </connections>
-                            </button>
-                        </barButtonItem>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="iPU-wV-ITy">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="boH-aG-vwW">
                                 <rect key="frame" x="327.33333333333331" y="0.0" width="49.666666666666686" height="44"/>
@@ -120,6 +134,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxl-T6-TY0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1434.3511450381679" y="-83.098591549295776"/>
+        </scene>
+        <!--Notifications-->
+        <scene sceneID="TWV-8j-E1V">
+            <objects>
+                <tableViewController id="VLC-C5-3Og" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="J88-cT-HVL">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="MWI-cw-Qsz">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MWI-cw-Qsz" id="yh6-ha-XVw">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VLC-C5-3Og" id="WJn-KS-UJr"/>
+                            <outlet property="delegate" destination="VLC-C5-3Og" id="oIX-4b-ZxC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Notifications" id="Pfz-C9-Mi1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oN6-Uf-4xs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1433" y="589"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xZ5-7g-y7d">
@@ -391,14 +434,40 @@
                                     <constraint firstItem="HFM-PA-HVT" firstAttribute="leading" secondItem="gaX-fc-Nar" secondAttribute="leading" id="uqF-VV-DE3"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyV-ke-dev">
+                                <rect key="frame" x="16" y="225" width="361" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn on notification:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd1-Ex-1hQ">
+                                        <rect key="frame" x="0.0" y="14.666666666666657" width="304" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="znZ-AG-9hZ">
+                                        <rect key="frame" x="312" y="9.6666666666666572" width="51" height="31"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Sd1-Ex-1hQ" firstAttribute="leading" secondItem="HyV-ke-dev" secondAttribute="leading" id="DkY-HA-IEO"/>
+                                    <constraint firstAttribute="height" constant="50" id="dFf-pn-G3v"/>
+                                    <constraint firstItem="znZ-AG-9hZ" firstAttribute="leading" secondItem="Sd1-Ex-1hQ" secondAttribute="trailing" constant="8" id="pSc-0l-bY4"/>
+                                    <constraint firstItem="Sd1-Ex-1hQ" firstAttribute="centerY" secondItem="HyV-ke-dev" secondAttribute="centerY" id="qnP-5V-azM"/>
+                                    <constraint firstItem="znZ-AG-9hZ" firstAttribute="centerY" secondItem="HyV-ke-dev" secondAttribute="centerY" id="srj-1U-tMi"/>
+                                    <constraint firstAttribute="trailing" secondItem="znZ-AG-9hZ" secondAttribute="trailing" id="wWx-fc-mBu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Olc-dx-JiJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="HyV-ke-dev" secondAttribute="trailing" constant="16" id="6m0-gW-Jc0"/>
                             <constraint firstItem="LlD-db-Ghd" firstAttribute="top" secondItem="Olc-dx-JiJ" secondAttribute="top" constant="8" id="84h-p9-xIh"/>
                             <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="LlD-db-Ghd" secondAttribute="trailing" constant="16" id="D1R-5R-cXu"/>
                             <constraint firstItem="gaX-fc-Nar" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="16" id="HQP-fL-jO0"/>
                             <constraint firstItem="Olc-dx-JiJ" firstAttribute="trailing" secondItem="gaX-fc-Nar" secondAttribute="trailing" constant="16" id="LJt-kR-yyb"/>
+                            <constraint firstItem="HyV-ke-dev" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="16" id="MIr-hY-cux"/>
+                            <constraint firstItem="HyV-ke-dev" firstAttribute="top" secondItem="gaX-fc-Nar" secondAttribute="bottom" constant="8" id="Oqf-f3-mOR"/>
                             <constraint firstItem="gaX-fc-Nar" firstAttribute="top" secondItem="LlD-db-Ghd" secondAttribute="bottom" constant="16" id="g2h-Y7-eWL"/>
                             <constraint firstItem="9he-tv-Psq" firstAttribute="centerX" secondItem="Olc-dx-JiJ" secondAttribute="centerX" id="mZ8-MW-AX5"/>
                             <constraint firstItem="LlD-db-Ghd" firstAttribute="leading" secondItem="Olc-dx-JiJ" secondAttribute="leading" constant="16" id="p6q-Sw-Ndl"/>
@@ -409,6 +478,7 @@
                     <connections>
                         <outlet property="dueDatePicker" destination="sTS-zl-zc6" id="6Cc-lE-7Bx"/>
                         <outlet property="taskContentTextField" destination="LlD-db-Ghd" id="xwM-rg-uYk"/>
+                        <outlet property="turnOnNotifiactionsSwitch" destination="znZ-AG-9hZ" id="n0X-Vc-nLr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jM4-PV-4KB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -473,6 +543,7 @@
         <segue reference="s9g-Xi-arN"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="bell.badge" catalog="system" width="117" height="128"/>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="plus.circle" catalog="system" width="128" height="123"/>

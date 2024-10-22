@@ -14,13 +14,13 @@
 		8C6651C52CBFFBF800E12710 /* SubtaskFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651C42CBFFBF800E12710 /* SubtaskFormViewController.swift */; };
 		8C6651C62CC008DC00E12710 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 8C66517F2CBEEDE500E12710 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8C6651CA2CC01EED00E12710 /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651C92CC01EED00E12710 /* LocalNotificationsService.swift */; };
-		8C6651D72CC024D500E12710 /* TodoSubtask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651D32CC024D500E12710 /* TodoSubtask+CoreDataClass.swift */; };
-		8C6651D82CC024D500E12710 /* TodoSubtask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651D42CC024D500E12710 /* TodoSubtask+CoreDataProperties.swift */; };
-		8C6651D92CC024D500E12710 /* TodoTask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651D52CC024D500E12710 /* TodoTask+CoreDataClass.swift */; };
-		8C6651DA2CC024D500E12710 /* TodoTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651D62CC024D500E12710 /* TodoTask+CoreDataProperties.swift */; };
 		8C6651DC2CC0554E00E12710 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6651DB2CC0554E00E12710 /* SettingsTableViewController.swift */; };
 		8C794BA52CC1B692005059AD /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BA42CC1B692005059AD /* SettingsProvider.swift */; };
 		8C794BA72CC1BA7E005059AD /* DBManagers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BA62CC1BA7E005059AD /* DBManagers.swift */; };
+		8C794BAC2CC6F9EA005059AD /* TodoTask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BA82CC6F9EA005059AD /* TodoTask+CoreDataClass.swift */; };
+		8C794BAD2CC6F9EA005059AD /* TodoTask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BA92CC6F9EA005059AD /* TodoTask+CoreDataProperties.swift */; };
+		8C794BAE2CC6F9EA005059AD /* TodoSubtask+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BAA2CC6F9EA005059AD /* TodoSubtask+CoreDataClass.swift */; };
+		8C794BAF2CC6F9EA005059AD /* TodoSubtask+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BAB2CC6F9EA005059AD /* TodoSubtask+CoreDataProperties.swift */; };
 		8C88C3942CB5834A00A1D174 /* SubtasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */; };
 		8C88C3972CB59EF000A1D174 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */; };
 		8C88C39B2CB5A00A00A1D174 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */; };
@@ -59,13 +59,13 @@
 		8C6651872CBF034F00E12710 /* TaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFormViewController.swift; sourceTree = "<group>"; };
 		8C6651C42CBFFBF800E12710 /* SubtaskFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskFormViewController.swift; sourceTree = "<group>"; };
 		8C6651C92CC01EED00E12710 /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
-		8C6651D32CC024D500E12710 /* TodoSubtask+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoSubtask+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8C6651D42CC024D500E12710 /* TodoSubtask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoSubtask+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		8C6651D52CC024D500E12710 /* TodoTask+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoTask+CoreDataClass.swift"; sourceTree = "<group>"; };
-		8C6651D62CC024D500E12710 /* TodoTask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoTask+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8C6651DB2CC0554E00E12710 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		8C794BA42CC1B692005059AD /* SettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
 		8C794BA62CC1BA7E005059AD /* DBManagers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManagers.swift; sourceTree = "<group>"; };
+		8C794BA82CC6F9EA005059AD /* TodoTask+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoTask+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8C794BA92CC6F9EA005059AD /* TodoTask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoTask+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		8C794BAA2CC6F9EA005059AD /* TodoSubtask+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoSubtask+CoreDataClass.swift"; sourceTree = "<group>"; };
+		8C794BAB2CC6F9EA005059AD /* TodoSubtask+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoSubtask+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtasksViewController.swift; sourceTree = "<group>"; };
 		8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -178,10 +178,10 @@
 		8CBD272F2CB48FE100E413E3 = {
 			isa = PBXGroup;
 			children = (
-				8C6651D32CC024D500E12710 /* TodoSubtask+CoreDataClass.swift */,
-				8C6651D42CC024D500E12710 /* TodoSubtask+CoreDataProperties.swift */,
-				8C6651D52CC024D500E12710 /* TodoTask+CoreDataClass.swift */,
-				8C6651D62CC024D500E12710 /* TodoTask+CoreDataProperties.swift */,
+				8C794BA82CC6F9EA005059AD /* TodoTask+CoreDataClass.swift */,
+				8C794BA92CC6F9EA005059AD /* TodoTask+CoreDataProperties.swift */,
+				8C794BAA2CC6F9EA005059AD /* TodoSubtask+CoreDataClass.swift */,
+				8C794BAB2CC6F9EA005059AD /* TodoSubtask+CoreDataProperties.swift */,
 				8CBD273A2CB48FE100E413E3 /* TodoList */,
 				8CBD27392CB48FE100E413E3 /* Products */,
 			);
@@ -303,18 +303,18 @@
 				8C88C39D2CB5AED500A1D174 /* ViewController+Alerts.swift in Sources */,
 				8C6651842CBEEFE100E12710 /* RealmManager.swift in Sources */,
 				8CBD273E2CB48FE100E413E3 /* SceneDelegate.swift in Sources */,
-				8C6651D82CC024D500E12710 /* TodoSubtask+CoreDataProperties.swift in Sources */,
+				8C794BAF2CC6F9EA005059AD /* TodoSubtask+CoreDataProperties.swift in Sources */,
 				8C88C39B2CB5A00A00A1D174 /* SubtaskTableViewCell.swift in Sources */,
+				8C794BAC2CC6F9EA005059AD /* TodoTask+CoreDataClass.swift in Sources */,
 				8CA7C3852CBC64DE006F32B8 /* TaskEntity.swift in Sources */,
-				8C6651DA2CC024D500E12710 /* TodoTask+CoreDataProperties.swift in Sources */,
 				8C794BA72CC1BA7E005059AD /* DBManagers.swift in Sources */,
-				8C6651D72CC024D500E12710 /* TodoSubtask+CoreDataClass.swift in Sources */,
 				8CA7C3812CBC6373006F32B8 /* DBManager.swift in Sources */,
 				8C6651DC2CC0554E00E12710 /* SettingsTableViewController.swift in Sources */,
 				8CA7C38B2CBC6E26006F32B8 /* CoreDataStack.swift in Sources */,
-				8C6651D92CC024D500E12710 /* TodoTask+CoreDataClass.swift in Sources */,
 				8C794BA52CC1B692005059AD /* SettingsProvider.swift in Sources */,
+				8C794BAE2CC6F9EA005059AD /* TodoSubtask+CoreDataClass.swift in Sources */,
 				8CBD27462CB48FE100E413E3 /* TodoList.xcdatamodeld in Sources */,
+				8C794BAD2CC6F9EA005059AD /* TodoTask+CoreDataProperties.swift in Sources */,
 				8CA7C3892CBC69AE006F32B8 /* CoreDataManager.swift in Sources */,
 				8C6651C52CBFFBF800E12710 /* SubtaskFormViewController.swift in Sources */,
 				8C88C3972CB59EF000A1D174 /* TaskTableViewCell.swift in Sources */,

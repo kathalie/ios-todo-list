@@ -80,7 +80,8 @@ final class TaskTableViewCell: UITableViewCell {
             id: taskEntity.id,
             content: taskEntity.content,
             isCompleted: !taskEntity.isCompleted,
-            dueDate: taskEntity.dueDate
+            dueDate: taskEntity.dueDate, 
+            notificationsOn: taskEntity.notificationsOn
         )
         
         let editedSuccessfully = delegate.saveEditedTask(editedTaskEntity)

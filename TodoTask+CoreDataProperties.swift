@@ -2,7 +2,7 @@
 //  TodoTask+CoreDataProperties.swift
 //  TodoList
 //
-//  Created by Kathryn Verkhogliad on 16.10.2024.
+//  Created by Kathryn Verkhogliad on 21.10.2024.
 //
 //
 
@@ -20,7 +20,8 @@ extension TodoTask {
     @NSManaged public var dueDate: Date
     @NSManaged public var id: UUID
     @NSManaged public var isCompleted: Bool
-    @NSManaged public var subtasks: NSSet
+    @NSManaged public var notificationsOn: Bool
+    @NSManaged public var subtasks: NSSet?
 
 }
 

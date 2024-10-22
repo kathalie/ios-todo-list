@@ -23,14 +23,18 @@ class TaskFormViewController: UIViewController {
     
     private var taskContent: String = ""
     private var dueDate: Date = Date()
-        
+    private var notificationsOn: Bool = true
+    
     @IBOutlet private weak var taskContentTextField: UITextField!
     
     @IBOutlet private weak var dueDatePicker: UIDatePicker!
-        
+    
+    @IBOutlet private weak var turnOnNotifiactionsSwitch: UISwitch!
+    
     @IBAction private func saveChanges(_ sender: Any) {
         let taskContent = taskContentTextField.text ?? ""
         let dueDate = dueDatePicker.date
+        let notificationsOn = turnOnNotifiactionsSwitch.isOn
         
         switch mode {
         case .creating:
@@ -41,6 +45,7 @@ class TaskFormViewController: UIViewController {
                 content: taskContent,
                 isCompleted: taskEntity.isCompleted,
                 dueDate: dueDate,
+                notificationsOn: notificationsOn,
                 subtasks: taskEntity.subtasks
             )
             
@@ -55,6 +60,7 @@ class TaskFormViewController: UIViewController {
         
         taskContentTextField.text = taskContent
         dueDatePicker.date = dueDate
+        turnOnNotifiactionsSwitch.isOn = notificationsOn
         
         switch mode {
         case .creating:
@@ -73,6 +79,7 @@ class TaskFormViewController: UIViewController {
         
         self.taskContent = taskEntity.content
         self.dueDate = taskEntity.dueDate
+        self.notificationsOn = taskEntity.notificationsOn
     }
 }
 

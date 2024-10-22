@@ -17,6 +17,7 @@ struct TaskEntity {
     let content: String
     let isCompleted: Bool
     let dueDate: Date
+    let notificationsOn: Bool
     let subtasks: [SubtaskEntity]
     
     init(from task: TodoTask, with subtasks: [SubtaskEntity] = []) {
@@ -25,14 +26,16 @@ struct TaskEntity {
         self.dueDate = task.dueDate
         self.isCompleted = task.isCompleted
         self.subtasks = subtasks
+        self.notificationsOn = task.notificationsOn
     }
     
-    init(id: UUID, content: String, isCompleted: Bool, dueDate: Date, subtasks: [SubtaskEntity] = []) {
+    init(id: UUID, content: String, isCompleted: Bool, dueDate: Date, notificationsOn: Bool, subtasks: [SubtaskEntity] = []) {
         self.id = id
         self.content = content
         self.dueDate = dueDate
         self.isCompleted = isCompleted
         self.subtasks = subtasks
+        self.notificationsOn = notificationsOn
     }
     
     init(from realmTask: TaskRealmModel, with subtasks: [SubtaskEntity] = []) {
@@ -40,6 +43,7 @@ struct TaskEntity {
         self.content = realmTask.content
         self.dueDate = realmTask.dueDate
         self.isCompleted = realmTask.isCompleted
+        self.notificationsOn = realmTask.notificationsOn
         self.subtasks = subtasks
     }
 }

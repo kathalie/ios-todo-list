@@ -13,6 +13,7 @@ class TaskRealmModel: Object {
     @Persisted var content: String
     @Persisted var dueDate: Date
     @Persisted var isCompleted = true
+    @Persisted var notificationsOn = true
     
     @Persisted(originProperty: "parentTask") var subtasks: LinkingObjects<SubtaskRealmModel>
     
@@ -20,13 +21,15 @@ class TaskRealmModel: Object {
         id: UUID = UUID(),
         content: String,
         dueDate: Date,
-        isCompleted: Bool = false
+        isCompleted: Bool = false,
+        notificationsOn: Bool = true
     ) {
         self.init()
         self.id = id
         self.content = content
         self.dueDate = dueDate
         self.isCompleted = isCompleted
+        self.notificationsOn = notificationsOn
     }
 }
 
