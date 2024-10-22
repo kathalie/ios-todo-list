@@ -113,18 +113,32 @@
                                 </button>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="iPU-wV-ITy">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="boH-aG-vwW">
-                                <rect key="frame" x="327.33333333333331" y="0.0" width="49.666666666666686" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system"/>
-                                <connections>
-                                    <segue destination="PTe-vx-bqp" kind="show" identifier="go_to_create_task" id="Y1y-oR-6ZU"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="iPU-wV-ITy">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="boH-aG-vwW">
+                                    <rect key="frame" x="327.33333333333337" y="0.0" width="49.666666666666686" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" systemColor="systemPinkColor"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system"/>
+                                    <connections>
+                                        <segue destination="PTe-vx-bqp" kind="show" identifier="go_to_create_task" id="Y1y-oR-6ZU"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="ADC-5Z-PhI">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="x0n-Q0-x5m">
+                                    <rect key="frame" x="232.33333333333337" y="5" width="87" height="34.333333333333336"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="tintColor" systemColor="systemPinkColor"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="lock" catalog="system"/>
+                                    <connections>
+                                        <segue destination="31w-KA-uGX" kind="show" id="tmH-au-jAo"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="WXr-cY-qC6" kind="show" identifier="go_to_subtasks" id="N93-jz-H0w"/>
@@ -202,26 +216,26 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notification_cell" id="MWI-cw-Qsz" customClass="NotificationTableViewCell" customModule="TodoList" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="393" height="95.666664123535156"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="96.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MWI-cw-Qsz" id="yh6-ha-XVw">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="95.666664123535156"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="96.333335876464844"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UO-ge-qqZ">
-                                            <rect key="frame" x="16" y="41" width="361" height="19.333333333333329"/>
+                                            <rect key="frame" x="16" y="41.666666666666664" width="361" height="19.333333333333336"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbQ-cW-kee">
-                                            <rect key="frame" x="16" y="68.333333333333329" width="361" height="19.333333333333329"/>
+                                            <rect key="frame" x="16" y="69" width="361" height="19.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ew-is-fFG">
-                                            <rect key="frame" x="16" y="8" width="361" height="27"/>
+                                            <rect key="frame" x="16" y="8.0000000000000018" width="361" height="27.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -257,6 +271,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oN6-Uf-4xs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1434" y="687"/>
+        </scene>
+        <!--Secure Tasks-->
+        <scene sceneID="1NB-a3-m8e">
+            <objects>
+                <tableViewController id="31w-KA-uGX" customClass="SecureTasksViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="F5G-1D-bNB">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="secure_task_cell" id="wPU-hu-tK2" customClass="SecureTaskCellView" customModule="TodoList" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="59"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wPU-hu-tK2" id="jPj-JY-OcS">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vR9-0I-1si">
+                                            <rect key="frame" x="36" y="19" width="321" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="vR9-0I-1si" firstAttribute="top" secondItem="jPj-JY-OcS" secondAttribute="topMargin" constant="8" id="WeT-Fo-r8k"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="vR9-0I-1si" secondAttribute="trailing" constant="16" id="dUs-W9-ogL"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="vR9-0I-1si" secondAttribute="bottom" constant="8" id="h12-dE-D95"/>
+                                        <constraint firstItem="vR9-0I-1si" firstAttribute="leading" secondItem="jPj-JY-OcS" secondAttribute="leadingMargin" constant="16" id="mZO-Kv-L6S"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="secureTaskLabel" destination="vR9-0I-1si" id="wTl-QP-iil"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="31w-KA-uGX" id="PG2-nT-SfP"/>
+                            <outlet property="delegate" destination="31w-KA-uGX" id="6Rz-T7-cuG"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Secure Tasks" id="yUl-50-dQ0">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="bUb-mc-J9d">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="a8z-BD-qsi">
+                                <rect key="frame" x="290" y="5" width="87" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="addSecureTask:" destination="31w-KA-uGX" eventType="touchUpInside" id="Yot-5J-w9U"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kLz-np-lWV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2265" y="687"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xZ5-7g-y7d">
@@ -353,7 +426,6 @@
                                 <rect key="frame" x="327.33333333333331" y="0.0" width="49.666666666666686" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="h9u-qM-YY8"/>
                                     <constraint firstAttribute="width" constant="45" id="zg6-Nl-ghP"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemPinkColor"/>
@@ -606,6 +678,7 @@
         <image name="bell.badge" catalog="system" width="117" height="128"/>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="lock" catalog="system" width="125" height="128"/>
         <image name="plus.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

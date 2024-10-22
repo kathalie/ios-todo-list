@@ -7,12 +7,16 @@
 
 import Foundation
 import Security
+import KeychainAccess
 
 class KeychainManager {
     struct Const {
         static let usernameField = "username"
         static let passwordField = "password"
+        static let secureTasksField = "secureTasks"
     }
+    
+    private static let keychain = Keychain(service: "com.example.SecureTodos")
     
     static func saveCredentials(username: String, password: String) {
         let usernameData = username.data(using: .utf8)!
@@ -75,5 +79,28 @@ class KeychainManager {
             kSecAttrAccount as String: Const.passwordField
         ]
         SecItemDelete(passwordQuery as CFDictionary)
+    }
+    
+    static func saveSecureTask(_ task: String) {
+        var tasks = loadSecureTasks() ?? []
+        
+        tasks.append(task)
+        
+        let tasksData = try? JSONEncoder().encode(tasks)
+        
+        keychain[Const.secureTasksField] = tasksData?.base64EncodedString()
+    }
+    
+    static func loadSecureTasks() -> [String]? {
+        guard 
+            let tasksDataString = keychain[Const.secureTasksField],
+            let tasksData = Data(base64Encoded: tasksDataString)
+        else { return nil }
+        
+        return try? JSONDecoder().decode([String].self, from: tasksData)
+    }
+    
+    static func clearProtectedTasks() {
+        keychain[Const.secureTasksField] = nil
     }
 }

@@ -30,6 +30,9 @@
 		8C794BBD2CC82718005059AD /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BBC2CC82718005059AD /* AuthViewController.swift */; };
 		8C794BBF2CC82847005059AD /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BBE2CC82847005059AD /* AuthManager.swift */; };
 		8C794BC12CC82B06005059AD /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BC02CC82B06005059AD /* KeychainManager.swift */; };
+		8C794BC32CC83CC6005059AD /* SecureTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BC22CC83CC6005059AD /* SecureTasksViewController.swift */; };
+		8C794BC52CC83E25005059AD /* SecureTaskCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BC42CC83E25005059AD /* SecureTaskCellView.swift */; };
+		8C794BC82CC8421B005059AD /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 8C794BC72CC8421B005059AD /* KeychainAccess */; };
 		8C88C3942CB5834A00A1D174 /* SubtasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */; };
 		8C88C3972CB59EF000A1D174 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */; };
 		8C88C39B2CB5A00A00A1D174 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */; };
@@ -84,6 +87,8 @@
 		8C794BBC2CC82718005059AD /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8C794BBE2CC82847005059AD /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8C794BC02CC82B06005059AD /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		8C794BC22CC83CC6005059AD /* SecureTasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTasksViewController.swift; sourceTree = "<group>"; };
+		8C794BC42CC83E25005059AD /* SecureTaskCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureTaskCellView.swift; sourceTree = "<group>"; };
 		8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtasksViewController.swift; sourceTree = "<group>"; };
 		8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -110,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C794BC82CC8421B005059AD /* KeychainAccess in Frameworks */,
 				8C6651802CBEEDE500E12710 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +174,7 @@
 				8C6651DB2CC0554E00E12710 /* SettingsTableViewController.swift */,
 				8C794BB02CC7BA85005059AD /* NotificationsViewController.swift */,
 				8C794BBC2CC82718005059AD /* AuthViewController.swift */,
+				8C794BC22CC83CC6005059AD /* SecureTasksViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +185,7 @@
 				8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */,
 				8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */,
 				8C794BB22CC7CD77005059AD /* NotificationTableViewCell.swift */,
+				8C794BC42CC83E25005059AD /* SecureTaskCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -262,6 +270,7 @@
 			name = TodoList;
 			packageProductDependencies = (
 				8C66517F2CBEEDE500E12710 /* RealmSwift */,
+				8C794BC72CC8421B005059AD /* KeychainAccess */,
 			);
 			productName = TodoList;
 			productReference = 8CBD27382CB48FE100E413E3 /* TodoList.app */;
@@ -293,6 +302,7 @@
 			mainGroup = 8CBD272F2CB48FE100E413E3;
 			packageReferences = (
 				8C66517E2CBEEDE500E12710 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				8C794BC62CC8421B005059AD /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 8CBD27392CB48FE100E413E3 /* Products */;
 			projectDirPath = "";
@@ -325,6 +335,7 @@
 				8C6651CA2CC01EED00E12710 /* LocalNotificationsService.swift in Sources */,
 				8CBD27402CB48FE100E413E3 /* TasksViewController.swift in Sources */,
 				8CA7C3872CBC64E7006F32B8 /* SubtaskEntity.swift in Sources */,
+				8C794BC52CC83E25005059AD /* SecureTaskCellView.swift in Sources */,
 				8C794BBD2CC82718005059AD /* AuthViewController.swift in Sources */,
 				8C794BB12CC7BA85005059AD /* NotificationsViewController.swift in Sources */,
 				8C88C3942CB5834A00A1D174 /* SubtasksViewController.swift in Sources */,
@@ -349,6 +360,7 @@
 				8C794BA52CC1B692005059AD /* SettingsProvider.swift in Sources */,
 				8C794BAE2CC6F9EA005059AD /* TodoSubtask+CoreDataClass.swift in Sources */,
 				8C794BB72CC7FD41005059AD /* NotificationEntity.swift in Sources */,
+				8C794BC32CC83CC6005059AD /* SecureTasksViewController.swift in Sources */,
 				8CBD27462CB48FE100E413E3 /* TodoList.xcdatamodeld in Sources */,
 				8C794BAD2CC6F9EA005059AD /* TodoTask+CoreDataProperties.swift in Sources */,
 				8CA7C3892CBC69AE006F32B8 /* CoreDataManager.swift in Sources */,
@@ -587,6 +599,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		8C794BC62CC8421B005059AD /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -594,6 +614,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8C66517E2CBEEDE500E12710 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		8C794BC72CC8421B005059AD /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C794BC62CC8421B005059AD /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 

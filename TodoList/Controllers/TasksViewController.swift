@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import LocalAuthentication
 
 class TasksViewController: UITableViewController {
     struct Const {
@@ -16,43 +15,16 @@ class TasksViewController: UITableViewController {
         static let goToEditTask = "go_to_edit_task"
         static let goToSettings = "go_to_settings"
         static let goToNotifications = "go_to_notifications"
+        static let goToSecureTasks = "go_to_secure_tasks"
     }
     
     let localNotificationService = LocalNotificationsService.shared
     
     var taskEntities: [TaskEntity] = []
-//    var laSuccess: Bool = false {
-//        didSet {
-//            tableView.isHidden = !laSuccess
-//        }
-//    }
-    
-//    func askAuthentication() {
-//        var context = LAContext()
-//        
-//        var error: NSError?
-//        guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
-//            print(error?.localizedDescription ?? "Can't evaluate policy")
-//
-//            return
-//        }
-//        
-//        Task {
-//            do {
-//                try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Log in to your account")
-//                state = .loggedin
-//            } catch let error {
-//                print(error.localizedDescription)
-//                // Fall back to a asking for username and password.
-//                // ...
-//            }
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        askAuthentication()
         loadTasks()
     }
     
@@ -115,8 +87,7 @@ class TasksViewController: UITableViewController {
         case Const.goToSettings:
             let settingsVC = segue.destination as! SettingsTableViewController
             settingsVC.delegate = self
-//        case Const.goToNotifications:
-//            let notificationsVC = segue.destination as! NotificationsViewController
+            
         default: break
         }
     }
