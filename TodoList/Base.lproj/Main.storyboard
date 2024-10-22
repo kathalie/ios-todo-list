@@ -101,7 +101,7 @@
                                 </button>
                             </barButtonItem>
                             <barButtonItem style="plain" id="qTI-0q-EM4">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VPb-aQ-sxW">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="VPb-aQ-sxW">
                                     <rect key="frame" x="75" y="5" width="87" height="34.333333333333336"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="tintColor" systemColor="systemPinkColor"/>
@@ -145,26 +145,26 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notification_cell" id="MWI-cw-Qsz" customClass="NotificationTableViewCell" customModule="TodoList" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="393" height="96"/>
+                                <rect key="frame" x="0.0" y="50" width="393" height="95.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MWI-cw-Qsz" id="yh6-ha-XVw">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="96"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="95.333335876464844"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UO-ge-qqZ">
-                                            <rect key="frame" x="16" y="41.333333333333336" width="361" height="19.333333333333336"/>
+                                            <rect key="frame" x="16" y="40.666666666666664" width="361" height="19.333333333333336"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbQ-cW-kee">
-                                            <rect key="frame" x="16" y="68.666666666666671" width="361" height="19.333333333333329"/>
+                                            <rect key="frame" x="16" y="68" width="361" height="19.333333333333329"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ew-is-fFG">
-                                            <rect key="frame" x="16" y="7.9999999999999982" width="361" height="27.333333333333329"/>
+                                            <rect key="frame" x="16" y="8.0000000000000018" width="361" height="26.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -367,20 +367,20 @@
                             <tableViewSection headerTitle="notifications" id="maa-dk-GzN" userLabel="Notifications">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="9Bb-vI-y7J">
-                                        <rect key="frame" x="20" y="187.66666603088379" width="353" height="43.333332061767578"/>
+                                        <rect key="frame" x="20" y="187.66666603088379" width="353" height="42.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Bb-vI-y7J" id="cO0-Gp-EHQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="43.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="42.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send local notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH3-mT-uA7">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="260" height="21.333333333333329"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="260" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="odx-cZ-NY4">
-                                                    <rect key="frame" x="288" y="6.3333333333333321" width="51" height="30.999999999999996"/>
+                                                    <rect key="frame" x="288" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="allowLocalNotificationsChanged:" destination="K2B-5O-XsV" eventType="valueChanged" id="mbt-8j-fDz"/>
                                                     </connections>
@@ -515,7 +515,7 @@
                     <connections>
                         <outlet property="dueDatePicker" destination="sTS-zl-zc6" id="6Cc-lE-7Bx"/>
                         <outlet property="taskContentTextField" destination="LlD-db-Ghd" id="xwM-rg-uYk"/>
-                        <outlet property="turnOnNotifiactionsSwitch" destination="znZ-AG-9hZ" id="n0X-Vc-nLr"/>
+                        <outlet property="turnOnNotificationsSwitch" destination="znZ-AG-9hZ" id="n0X-Vc-nLr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jM4-PV-4KB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

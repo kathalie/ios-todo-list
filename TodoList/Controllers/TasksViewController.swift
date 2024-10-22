@@ -179,14 +179,18 @@ extension TasksViewController: TaskFormDelegate {
         }
         
         // Reschedule local notidication
-        removeLocalNotification(for: taskEntity)
-        scheduleLocalNotification(for: taskEntity)
+        if taskEntity.notificationsOn {
+            removeLocalNotification(for: taskEntity)
+            scheduleLocalNotification(for: taskEntity)
+        } else {
+            removeLocalNotification(for: taskEntity)
+        }
         
         loadTasks()
     }
     
-    func createTask(content: String, dueDate: Date) {
-        let newTask = CreateTaskEntity(content: content, dueDate: dueDate)
+    func createTask(content: String, dueDate: Date, notificationsOn: Bool) {
+        let newTask = CreateTaskEntity(content: content, dueDate: dueDate, notificationsOn: notificationsOn)
         
         let createdTask = SettingsProvider.currentDbManager.createTask(newTask: newTask)
         
@@ -197,15 +201,17 @@ extension TasksViewController: TaskFormDelegate {
         }
         
         // Schedule local notification
-        scheduleLocalNotification(for: createdTask)
+        if notificationsOn {
+            scheduleLocalNotification(for: createdTask)
+        }
         
         loadTasks()
     }
     
     private func scheduleLocalNotification(for task: TaskEntity) {
-        guard SettingsProvider.localNotificationsAllowed else {
-            return
-        }
+//        guard SettingsProvider.localNotificationsAllowed else {
+//            return
+//        }
         
         Task {
             await localNotificationService.scheduleNotification(

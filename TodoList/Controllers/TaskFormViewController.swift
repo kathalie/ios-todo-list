@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TaskFormDelegate {
-    func createTask(content: String, dueDate: Date)
+    func createTask(content: String, dueDate: Date, notificationsOn: Bool)
     func editTask(as taskEntity: TaskEntity)
 }
 
@@ -29,16 +29,16 @@ class TaskFormViewController: UIViewController {
     
     @IBOutlet private weak var dueDatePicker: UIDatePicker!
     
-    @IBOutlet private weak var turnOnNotifiactionsSwitch: UISwitch!
+    @IBOutlet private weak var turnOnNotificationsSwitch: UISwitch!
     
     @IBAction private func saveChanges(_ sender: Any) {
         let taskContent = taskContentTextField.text ?? ""
         let dueDate = dueDatePicker.date
-        let notificationsOn = turnOnNotifiactionsSwitch.isOn
+        let notificationsOn = turnOnNotificationsSwitch.isOn
         
         switch mode {
         case .creating:
-            delegate?.createTask(content: taskContent, dueDate: dueDate)
+            delegate?.createTask(content: taskContent, dueDate: dueDate, notificationsOn: notificationsOn)
         case .editing(let taskEntity):
             let editedTaskEntity = TaskEntity(
                 id: taskEntity.id,
@@ -60,7 +60,7 @@ class TaskFormViewController: UIViewController {
         
         taskContentTextField.text = taskContent
         dueDatePicker.date = dueDate
-        turnOnNotifiactionsSwitch.isOn = notificationsOn
+        turnOnNotificationsSwitch.isOn = notificationsOn
         
         switch mode {
         case .creating:

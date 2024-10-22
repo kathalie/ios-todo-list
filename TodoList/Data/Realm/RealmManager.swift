@@ -44,6 +44,7 @@ class RealmManager: DBManager {
             try realm.write {
                 taskToEdit.content = task.content
                 taskToEdit.dueDate = task.dueDate
+                taskToEdit.notificationsOn = task.notificationsOn
                 taskToEdit.isCompleted = task.isCompleted
             }
             

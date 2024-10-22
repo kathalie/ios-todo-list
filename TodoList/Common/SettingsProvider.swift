@@ -37,42 +37,42 @@ struct SettingsProvider {
         UserDefaults.standard.set(newDbManager.rawValue, forKey: UserDefaultKeys.dbManager.rawValue)
     }
     
-    static var localNotificationsAllowed: Bool {
-        UserDefaults.standard.bool(forKey: UserDefaultKeys.allowLocalNotifications.rawValue)
-    }
-    
-    static func allowLocalNotifications() async {
-        let allowed = await LocalNotificationsService.shared.requestNotificationAuthorisation()
-        
-        guard allowed else {
-            return
-        }
-        
-        UserDefaults.standard.setValue(true, forKey: UserDefaultKeys.allowLocalNotifications.rawValue)
-        
-        // Schedule notifications for all tasks
-        DispatchQueue.main.async {
-            for dbManager in dbManagers {
-                let tasks = dbManager.value.getTasks() ?? []
-                
-                for task in tasks {
-                    Task {
-                        await LocalNotificationsService.shared.scheduleNotification(
-                            task.id,
-                            on: task.dueDate,
-                            title: "You have a due task!",
-                            body: task.content
-                        )
-                    }
-                }
-            }
-        }
-    }
-    
-    static func denyLocalNotifications() async {
-        UserDefaults.standard.setValue(false, forKey: UserDefaultKeys.allowLocalNotifications.rawValue)
-        
-        // Remove all notifications
-        LocalNotificationsService.shared.cancelAllNotifications()
-    }
+//    static var localNotificationsAllowed: Bool {
+//        UserDefaults.standard.bool(forKey: UserDefaultKeys.allowLocalNotifications.rawValue)
+//    }
+//    
+//    static func allowLocalNotifications() async {
+//        let allowed = await LocalNotificationsService.shared.requestNotificationAuthorisation()
+//        
+//        guard allowed else {
+//            return
+//        }
+//        
+//        UserDefaults.standard.setValue(true, forKey: UserDefaultKeys.allowLocalNotifications.rawValue)
+//        
+//        // Schedule notifications for all tasks
+//        DispatchQueue.main.async {
+//            for dbManager in dbManagers {
+//                let tasks = dbManager.value.getTasks() ?? []
+//                
+//                for task in tasks {
+//                    Task {
+//                        await LocalNotificationsService.shared.scheduleNotification(
+//                            task.id,
+//                            on: task.dueDate,
+//                            title: "You have a due task!",
+//                            body: task.content
+//                        )
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    
+//    static func denyLocalNotifications() async {
+//        UserDefaults.standard.setValue(false, forKey: UserDefaultKeys.allowLocalNotifications.rawValue)
+//        
+//        // Remove all notifications
+//        LocalNotificationsService.shared.cancelAllNotifications()
+//    }
 }

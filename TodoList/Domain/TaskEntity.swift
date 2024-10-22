@@ -10,6 +10,7 @@ import Foundation
 struct CreateTaskEntity {
     let content: String
     let dueDate: Date
+    let notificationsOn: Bool
 }
 
 struct TaskEntity {

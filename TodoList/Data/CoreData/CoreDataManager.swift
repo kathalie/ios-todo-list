@@ -40,6 +40,7 @@ class CoreDataManager: DBManager {
         let task = TodoTask(context: context)
         task.content = newTask.content
         task.dueDate = newTask.dueDate
+        task.notificationsOn = newTask.notificationsOn
         task.isCompleted = false
         task.id = UUID()
         
@@ -63,6 +64,7 @@ class CoreDataManager: DBManager {
         
         taskToEdit.content = task.content
         taskToEdit.dueDate = task.dueDate
+        taskToEdit.notificationsOn = task.notificationsOn
         taskToEdit.isCompleted = task.isCompleted
         
         do {

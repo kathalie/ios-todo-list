@@ -19,17 +19,17 @@ class SettingsTableViewController: UITableViewController {
     
     @IBOutlet weak var allowLocalNotificationsSwitch: UISwitch!
     
-    @IBAction func allowLocalNotificationsChanged(_ sender: UISwitch) {
-        Task {
-            if sender.isOn {
-                await SettingsProvider.allowLocalNotifications()
-            } else {
-                await SettingsProvider.denyLocalNotifications()
-            }
-        }
-        
-        delegate?.update()
-    }
+//    @IBAction func allowLocalNotificationsChanged(_ sender: UISwitch) {
+//        Task {
+//            if sender.isOn {
+//                await SettingsProvider.allowLocalNotifications()
+//            } else {
+//                await SettingsProvider.denyLocalNotifications()
+//            }
+//        }
+//        
+//        delegate?.update()
+//    }
     
     private func setupDbPicker() {
         let dbManagerRaw = SettingsProvider.currentDbManagerRaw
@@ -39,19 +39,19 @@ class SettingsTableViewController: UITableViewController {
         dbPicker.selectRow(row, inComponent: 0, animated: false)
     }
     
-    private func setupLocalNotificationsSwitch() {
-        Task { [weak self] in
-            let allowed = SettingsProvider.localNotificationsAllowed
-            
-            DispatchQueue.main.async {[weak self] in
-                self?.allowLocalNotificationsSwitch.setOn(allowed, animated: false)
-            }
-        }
-    }
+//    private func setupLocalNotificationsSwitch() {
+//        Task { [weak self] in
+//            let allowed = SettingsProvider.localNotificationsAllowed
+//            
+//            DispatchQueue.main.async {[weak self] in
+//                self?.allowLocalNotificationsSwitch.setOn(allowed, animated: false)
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         setupDbPicker()
-        setupLocalNotificationsSwitch()
+//        setupLocalNotificationsSwitch()
     }
 }
 
