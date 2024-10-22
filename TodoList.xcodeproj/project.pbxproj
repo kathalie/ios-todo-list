@@ -27,6 +27,9 @@
 		8C794BB72CC7FD41005059AD /* NotificationEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BB62CC7FD41005059AD /* NotificationEntity.swift */; };
 		8C794BB92CC8063D005059AD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BB82CC8063D005059AD /* Util.swift */; };
 		8C794BBB2CC814A2005059AD /* RemoteNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BBA2CC814A2005059AD /* RemoteNotificationsService.swift */; };
+		8C794BBD2CC82718005059AD /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BBC2CC82718005059AD /* AuthViewController.swift */; };
+		8C794BBF2CC82847005059AD /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BBE2CC82847005059AD /* AuthManager.swift */; };
+		8C794BC12CC82B06005059AD /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C794BC02CC82B06005059AD /* KeychainManager.swift */; };
 		8C88C3942CB5834A00A1D174 /* SubtasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */; };
 		8C88C3972CB59EF000A1D174 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */; };
 		8C88C39B2CB5A00A00A1D174 /* SubtaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */; };
@@ -78,6 +81,9 @@
 		8C794BB62CC7FD41005059AD /* NotificationEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationEntity.swift; sourceTree = "<group>"; };
 		8C794BB82CC8063D005059AD /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		8C794BBA2CC814A2005059AD /* RemoteNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteNotificationsService.swift; sourceTree = "<group>"; };
+		8C794BBC2CC82718005059AD /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		8C794BBE2CC82847005059AD /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		8C794BC02CC82B06005059AD /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		8C88C3932CB5834A00A1D174 /* SubtasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtasksViewController.swift; sourceTree = "<group>"; };
 		8C88C3962CB59EF000A1D174 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		8C88C39A2CB5A00A00A1D174 /* SubtaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 			children = (
 				8C6651C92CC01EED00E12710 /* LocalNotificationsService.swift */,
 				8C794BBA2CC814A2005059AD /* RemoteNotificationsService.swift */,
+				8C794BBE2CC82847005059AD /* AuthManager.swift */,
+				8C794BC02CC82B06005059AD /* KeychainManager.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 				8C6651C42CBFFBF800E12710 /* SubtaskFormViewController.swift */,
 				8C6651DB2CC0554E00E12710 /* SettingsTableViewController.swift */,
 				8C794BB02CC7BA85005059AD /* NotificationsViewController.swift */,
+				8C794BBC2CC82718005059AD /* AuthViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -316,6 +325,7 @@
 				8C6651CA2CC01EED00E12710 /* LocalNotificationsService.swift in Sources */,
 				8CBD27402CB48FE100E413E3 /* TasksViewController.swift in Sources */,
 				8CA7C3872CBC64E7006F32B8 /* SubtaskEntity.swift in Sources */,
+				8C794BBD2CC82718005059AD /* AuthViewController.swift in Sources */,
 				8C794BB12CC7BA85005059AD /* NotificationsViewController.swift in Sources */,
 				8C88C3942CB5834A00A1D174 /* SubtasksViewController.swift in Sources */,
 				8C6651862CBEEFEC00E12710 /* RealmModels.swift in Sources */,
@@ -330,9 +340,11 @@
 				8C794BAC2CC6F9EA005059AD /* TodoTask+CoreDataClass.swift in Sources */,
 				8CA7C3852CBC64DE006F32B8 /* TaskEntity.swift in Sources */,
 				8C794BA72CC1BA7E005059AD /* DBManagers.swift in Sources */,
+				8C794BBF2CC82847005059AD /* AuthManager.swift in Sources */,
 				8CA7C3812CBC6373006F32B8 /* DBManager.swift in Sources */,
 				8C6651DC2CC0554E00E12710 /* SettingsTableViewController.swift in Sources */,
 				8C794BB52CC7FB53005059AD /* RealmNotificationsService.swift in Sources */,
+				8C794BC12CC82B06005059AD /* KeychainManager.swift in Sources */,
 				8CA7C38B2CBC6E26006F32B8 /* CoreDataStack.swift in Sources */,
 				8C794BA52CC1B692005059AD /* SettingsProvider.swift in Sources */,
 				8C794BAE2CC6F9EA005059AD /* TodoSubtask+CoreDataClass.swift in Sources */,
